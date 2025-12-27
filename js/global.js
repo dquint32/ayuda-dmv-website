@@ -1,6 +1,6 @@
 /* ========================================== */
 /* AYUDA DMV - GLOBAL JAVASCRIPT */
-/* Version: 6.1 - Fixed FAQ Accordion */
+/* Version: 6.3 - Footer Translation + Link Fix */
 /* ========================================== */
 
 (function() {
@@ -8,10 +8,8 @@
 
   /* --- 1. LANGUAGE MANAGER --- */
   const LanguageManager = {
-    // Stores current language (default 'es')
-    currentLang: 'es', 
-    
-    // Translation dictionary for elements using [data-i18n]
+    currentLang: 'es',
+
     translations: {
       es: {
         'nav.home': 'Inicio',
@@ -38,64 +36,62 @@
     },
 
     init() {
-       // 1. Check local storage for saved language preference
-       const savedLang = localStorage.getItem('ayudadmv_lang') || 'es';
-       this.switchLanguage(savedLang);
+      const savedLang = localStorage.getItem('ayudadmv_lang') || 'es';
+      this.switchLanguage(savedLang);
 
-       // 2. Bind click event to language toggle button
-       const toggleBtn = document.getElementById('lang-toggle');
-       if(toggleBtn) {
-         toggleBtn.addEventListener('click', () => {
-           const newLang = this.currentLang === 'es' ? 'en' : 'es';
-           this.switchLanguage(newLang);
-         });
-       }
+      const toggleBtn = document.getElementById('lang-toggle');
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+          const newLang = this.currentLang === 'es' ? 'en' : 'es';
+          this.switchLanguage(newLang);
+        });
+      }
     },
 
     switchLanguage(lang) {
       this.currentLang = lang;
       localStorage.setItem('ayudadmv_lang', lang);
       document.documentElement.lang = lang;
-      
-      // Update Button Text
-      const btn = document.getElementById('lang-toggle');
-      if(btn) btn.textContent = lang === 'es' ? 'EN' : 'ES';
 
-      // Update elements with data-en/data-es attributes
+      const btn = document.getElementById('lang-toggle');
+      if (btn) btn.textContent = lang === 'es' ? 'EN' : 'ES';
+
+      /* --- FIXED: data-en / data-es with line breaks + clickable links --- */
       document.querySelectorAll('[data-en][data-es]').forEach(el => {
-         const newText = el.getAttribute(`data-${lang}`);
-         if (!newText) return;
-         
-         // Preserve FontAwesome icons
-         const icon = el.querySelector('i');
-         if (icon) {
-            const iconHTML = icon.outerHTML;
-            el.innerHTML = `${iconHTML} ${newText}`;
-         } else {
-            // Check if it's an input/textarea (use placeholder)
-            if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-              el.placeholder = newText;
-            } 
-            // Check if it's a select option
-            else if (el.tagName === 'OPTION') {
-              el.textContent = newText;
-            }
-            // Regular text content
-            else {
-              el.textContent = newText;
-            }
-         }
+        let newText = el.getAttribute(`data-${lang}`);
+        if (!newText) return;
+
+        // Convert \n\n to <br><br>
+        newText = newText.replace(/\n\n/g, '<br><br>');
+
+        // Replace placeholders with real links
+        newText = newText
+          .replace('{email}', '<a href="mailto:placasfirmas.david@gmail.com" style="color:white; text-decoration:underline;">placasfirmas.david@gmail.com</a>')
+          .replace('{phone}', '<a href="tel:3035004122" style="color:white; text-decoration:underline;">(303) 500-4122</a>');
+
+        // Preserve icons if present
+        const icon = el.querySelector('i');
+        if (icon) {
+          const iconHTML = icon.outerHTML;
+          el.innerHTML = `${iconHTML} ${newText}`;
+        } else if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+          el.placeholder = newText;
+        } else if (el.tagName === 'OPTION') {
+          el.textContent = newText;
+        } else {
+          el.innerHTML = newText;
+        }
       });
 
-      // Update elements with data-i18n attributes using dictionary
+      /* --- Dictionary-based translations --- */
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if(this.translations[lang] && this.translations[lang][key]) {
+        if (this.translations[lang] && this.translations[lang][key]) {
           el.textContent = this.translations[lang][key];
         }
       });
 
-      // Update page title if it has data-i18n
+      /* --- Update <title> if needed --- */
       const titleEl = document.querySelector('title[data-i18n]');
       if (titleEl) {
         const titleKey = titleEl.getAttribute('data-i18n');
@@ -103,8 +99,8 @@
           document.title = this.translations[lang][titleKey];
         }
       }
-      
-      // Recalculate open accordion heights after language change
+
+      /* --- Recalculate accordion heights after translation --- */
       document.querySelectorAll('.accordion-button[aria-expanded="true"]').forEach(button => {
         const content = button.nextElementSibling;
         if (content) {
@@ -119,27 +115,16 @@
     init() {
       const menuToggle = document.querySelector('.menu-toggle');
       const navMenu = document.querySelector('.nav-menu');
-
       if (!menuToggle || !navMenu) return;
 
-      // Toggle Menu on Click
       menuToggle.addEventListener('click', () => {
         const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
         menuToggle.setAttribute('aria-expanded', !expanded);
-        
-        // Toggle 'active' class for CSS transition
         menuToggle.classList.toggle('active');
         navMenu.classList.toggle('active');
-        
-        // Prevent body scrolling when menu is open
-        if (!expanded) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = '';
-        }
+        document.body.style.overflow = expanded ? '' : 'hidden';
       });
 
-      // Close menu when clicking a link (Mobile UX)
       navMenu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
           menuToggle.classList.remove('active');
@@ -149,10 +134,9 @@
         });
       });
 
-      // Close menu when clicking outside
       document.addEventListener('click', (e) => {
-        if (navMenu.classList.contains('active') && 
-            !navMenu.contains(e.target) && 
+        if (navMenu.classList.contains('active') &&
+            !navMenu.contains(e.target) &&
             !menuToggle.contains(e.target)) {
           menuToggle.classList.remove('active');
           navMenu.classList.remove('active');
@@ -169,13 +153,8 @@
       const header = document.querySelector('.sticky-header');
       if (!header) return;
 
-      // Add 'scrolled' class when page is scrolled down > 50px
       window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-          header.classList.add('scrolled');
-        } else {
-          header.classList.remove('scrolled');
-        }
+        header.classList.toggle('scrolled', window.scrollY > 50);
       });
     }
   };
@@ -184,7 +163,6 @@
   const FAQAccordionManager = {
     init() {
       const accordionButtons = document.querySelectorAll('.accordion-button');
-      
       if (!accordionButtons.length) return;
 
       accordionButtons.forEach(button => {
@@ -193,16 +171,13 @@
           const content = button.nextElementSibling;
           const icon = button.querySelector('i');
 
-          // Toggle current accordion
           button.setAttribute('aria-expanded', !isExpanded);
-          
+
           if (!isExpanded) {
-            // Opening: Set max-height to full scrollHeight + extra padding
             content.style.maxHeight = (content.scrollHeight + 50) + 'px';
             content.style.padding = '20px';
             if (icon) icon.style.transform = 'rotate(180deg)';
           } else {
-            // Closing
             content.style.maxHeight = '0';
             content.style.padding = '0';
             if (icon) icon.style.transform = 'rotate(0deg)';
@@ -212,20 +187,18 @@
     }
   };
 
-  /* --- 5. SMOOTH SCROLL FOR ANCHOR LINKS --- */
+  /* --- 5. SMOOTH SCROLL --- */
   const SmoothScrollManager = {
     init() {
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
           const href = this.getAttribute('href');
-          
-          // Ignore empty hash or just '#'
           if (!href || href === '#') return;
-          
+
           const target = document.querySelector(href);
           if (target) {
             e.preventDefault();
-            const headerOffset = 80; // Height of sticky header
+            const headerOffset = 80;
             const elementPosition = target.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -239,28 +212,24 @@
     }
   };
 
-  /* --- 6. FORM VALIDATION (if needed in future) --- */
+  /* --- 6. FORM VALIDATION --- */
   const FormValidationManager = {
     init() {
       const forms = document.querySelectorAll('form[id]');
-      
       forms.forEach(form => {
         form.addEventListener('submit', (e) => {
-          // Basic honeypot check
           const honeypot = form.querySelector('input[name="website"]');
           if (honeypot && honeypot.value !== '') {
             e.preventDefault();
             console.log('Spam detected');
             return false;
           }
-
-          // Add more validation as needed
         });
       });
     }
   };
 
-  /* --- 7. FADE IN ANIMATION ON SCROLL --- */
+  /* --- 7. FADE-IN ANIMATIONS --- */
   const AnimationManager = {
     init() {
       const observerOptions = {
@@ -277,10 +246,8 @@
         });
       }, observerOptions);
 
-      // Observe elements that should fade in
-      document.querySelectorAll('.service-card, .member-card, .price-card, .faq-item').forEach(el => {
-        observer.observe(el);
-      });
+      document.querySelectorAll('.service-card, .member-card, .price-card, .faq-item')
+        .forEach(el => observer.observe(el));
     }
   };
 
@@ -292,8 +259,7 @@
     FAQAccordionManager.init();
     SmoothScrollManager.init();
     FormValidationManager.init();
-    
-    // Delay animation manager slightly for better performance
+
     setTimeout(() => {
       AnimationManager.init();
     }, 100);
