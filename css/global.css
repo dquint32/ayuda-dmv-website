@@ -1237,6 +1237,40 @@ footer {
   }
 }
 
+/* Fix for overflowing button text */
+.button-cta {
+    /* Allow text to wrap onto multiple lines */
+    white-space: normal !important; 
+    
+    /* Ensure the button grows vertically to fit the text */
+    height: auto !important; 
+    min-height: 44px; /* Standard accessible touch target size */
+    
+    /* Prevent the button from being wider than the screen */
+    max-width: 90%; 
+    width: fit-content;
+    
+    /* Center the button and the text inside it */
+    display: inline-block;
+    text-align: center;
+    
+    /* spacing adjustments */
+    padding: 12px 24px;
+    line-height: 1.4; /* Improves readability when text wraps */
+    
+    /* Prevent text from touching the edges of the button */
+    box-sizing: border-box; 
+}
+
+/* Optional: Slightly smaller font only on mobile to help it fit better */
+@media (max-width: 480px) {
+    .button-cta {
+        font-size: 0.95rem; 
+        padding: 12px 16px;
+    }
+}
+
 /* ========================================== */
 /* END OF GLOBAL STYLESHEET */
 /* ========================================== */
+
