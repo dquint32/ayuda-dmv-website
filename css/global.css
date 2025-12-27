@@ -1237,6 +1237,12 @@ footer {
   }
 }
 
+/* ========================================== */
+/* END OF GLOBAL STYLESHEET */
+/* ========================================== */
+
+
+
 /* Fix for overflowing button text */
 .button-cta {
     /* Allow text to wrap onto multiple lines */
@@ -1269,8 +1275,3 @@ footer {
         padding: 12px 16px;
     }
 }
-
-/* ========================================== */
-/* END OF GLOBAL STYLESHEET */
-/* ========================================== */
-
