@@ -1275,3 +1275,94 @@ footer {
         padding: 12px 16px;
     }
 }
+
+/* ========================================== */
+/* IMPROVED FOOTER STYLING */
+/* ========================================== */
+
+.site-footer {
+  background-color: var(--primary-dark);
+  color: rgba(255, 255, 255, 0.9);
+  padding: 40px 20px 30px;
+  text-align: center;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.site-footer .container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.site-footer p {
+  margin-bottom: 20px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.site-footer p:last-child {
+  margin-bottom: 0;
+}
+
+/* First paragraph (copyright) - slightly larger */
+.site-footer p:first-child {
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 25px;
+  color: white;
+}
+
+/* Legal paragraphs - smaller, more subdued */
+.site-footer p:nth-child(2),
+.site-footer p:nth-child(3) {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+/* Contact paragraph - slightly emphasized */
+.site-footer p:last-child {
+  font-size: 0.9rem;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Footer links styling */
+.site-footer a {
+  color: var(--accent-color);
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.site-footer a:hover {
+  color: var(--secondary-color);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .site-footer {
+    padding: 30px 15px 20px;
+    font-size: 0.85rem;
+  }
+  
+  .site-footer p:first-child {
+    font-size: 0.9rem;
+  }
+  
+  .site-footer p:nth-child(2),
+  .site-footer p:nth-child(3) {
+    font-size: 0.75rem;
+  }
+  
+  .site-footer p:last-child {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-footer {
+    text-align: left;
+  }
+}
