@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="faq.hero.title">Ayuda DMV – Preguntas Frecuentes (FAQ)</title>
+    <title data-i18n="nav.faq">FAQ - Ayuda DMV</title>
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -16,7 +16,7 @@
                     <img src="ayudaDMVLogo.jpg" alt="Ayuda DMV Logo">
                 </a>
             </div>
-
+            
             <nav id="main-navigation" class="nav-menu" role="navigation">
                 <ul class="nav-links">
                     <li><a href="index.html" data-i18n="nav.home">Inicio</a></li>
@@ -32,7 +32,7 @@
             <div class="quick-contact">
                 <a href="tel:3035004122" class="button-primary quick-call" aria-label="Call Now">
                     <i class="fas fa-phone" aria-hidden="true"></i>
-                    <span>Llamar</span>
+                    <span data-en="Call" data-es="Llamar">Llamar</span>
                 </a>
                 <a href="https://wa.me/13035004122" class="button-whatsapp quick-whatsapp" target="_blank" aria-label="WhatsApp">
                     <i class="fab fa-whatsapp"></i>
@@ -46,136 +46,183 @@
     </header>
 
     <main>
+        <!-- Hero Section -->
         <section class="hero-subpage">
             <div class="container">
-                <h1 data-en="Frequently Asked Questions" data-es="Preguntas Frecuentes">Preguntas Frecuentes</h1>
-                <p class="hero-subtitle" data-en="Find quick and clear answers to the most common questions about our services and policies." data-es="Encuentre respuestas rápidas y claras a las preguntas más comunes sobre nuestros servicios y políticas.">
-                    Encuentre respuestas rápidas y claras a las preguntas más comunes sobre nuestros servicios y políticas.
+                <h1 data-en="Frequently Asked Questions" data-es="Preguntas Frecuentes">
+                    Preguntas Frecuentes
+                </h1>
+                <p class="hero-subtitle" data-en="Find answers to common questions about our services" data-es="Encuentre respuestas a preguntas comunes sobre nuestros servicios">
+                    Encuentre respuestas a preguntas comunes sobre nuestros servicios
                 </p>
             </div>
         </section>
 
-        <section id="faq-content" class="faq-section">
+        <!-- FAQ Section -->
+        <section class="faq-section">
             <div class="container">
+                
+                <!-- Expand/Collapse All Button -->
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <button id="toggle-all-faq" class="button-secondary" style="display: inline-flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-chevron-down"></i>
+                        <span data-en="Expand All" data-es="Expandir Todo">Expandir Todo</span>
+                    </button>
+                </div>
+
                 <div class="faq-accordion">
 
+                    <!-- Category 1: General Services -->
+                    <h2 style="color: var(--primary-color); margin: 40px 0 25px; font-size: 1.8rem; border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">
+                        <span data-en="1. General Services" data-es="1. Servicios Generales">1. Servicios Generales</span>
+                    </h2>
+
                     <div class="faq-item">
                         <button class="accordion-button" aria-expanded="false">
-                            <span class="faq-question" data-en="What is Ayuda DMV and what services do you offer?" data-es="¿Qué es Ayuda DMV y qué servicios ofrece?">¿Qué es Ayuda DMV y qué servicios ofrece?</span>
+                            <span class="faq-question" data-en="What is Ayuda DMV and what services do you offer?" data-es="¿Qué es Ayuda DMV y qué servicios ofrece?">
+                                ¿Qué es Ayuda DMV y qué servicios ofrece?
+                            </span>
                             <i class="fas fa-chevron-down"></i>
                         </button>
                         <div class="accordion-content">
-                            <p data-en="We are a private, bilingual support service in Colorado. We help people like you avoid mistakes with the DMV. We offer document preparation, in-person accompaniment to your appointment, transportation service, three-way calls with the DMV to resolve your case, and early appointment scheduling." data-es="Somos un servicio de apoyo privado y bilingüe en Colorado. Ayudamos a gente como usted a evitar errores con el DMV. Ofrecemos preparación de documentos, acompañamiento en persona a su cita, servicio de transporte, llamadas de tres vías con el DMV para resolver su caso, y programación de citas tempranas.">
-                                Somos un servicio de apoyo privado y bilingüe en Colorado. Ayudamos a gente como usted a evitar errores con el DMV. Ofrecemos preparación de documentos, acompañamiento en persona a su cita, servicio de transporte, llamadas de tres vías con el DMV para resolver su caso, y programación de citas tempranas.
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <button class="accordion-button" aria-expanded="false">
-                            <span class="faq-question" data-en="Is Ayuda DMV part of the DMV or the government?" data-es="¿Ayuda DMV es parte del DMV o del gobierno?">¿Ayuda DMV es parte del DMV o del gobierno?</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                        <div class="accordion-content">
-                            <p data-en="No! We are a completely independent company. We are not the DMV, we don't work for them, nor are we lawyers. We are your dedicated support team, helping you understand and complete your paperwork correctly and stress-free." data-es="¡No! Somos una empresa totalmente independiente. No somos el DMV, ni trabajamos para ellos, ni somos abogados. Somos su equipo de apoyo dedicado a ayudarle a entender y completar sus trámites de forma correcta y sin estrés.">
-                                ¡No! Somos una empresa totalmente independiente. No somos el DMV, ni trabajamos para ellos, ni somos abogados. Somos su equipo de apoyo dedicado a ayudarle a entender y completar sus trámites de forma correcta y sin estrés.
+                            <p data-en="We provide bilingual administrative and clerical support in Colorado. Our services include typing DMV forms as directed by the client, certified Spanish-English translations, and mobile notary public services. We help you organize your paperwork to ensure it is complete before you head to your appointment." 
+                               data-es="Brindamos apoyo administrativo bilingüe en Colorado. Nuestros servicios incluyen el llenado de formularios del DMV (según las instrucciones del cliente), traducciones certificadas de español a inglés y servicios de notaría pública móvil. Le ayudamos a organizar su papeleo para asegurar que esté completo antes de su cita.">
+                                Brindamos apoyo administrativo bilingüe en Colorado. Nuestros servicios incluyen el llenado de formularios del DMV (según las instrucciones del cliente), traducciones certificadas de español a inglés y servicios de notaría pública móvil. Le ayudamos a organizar su papeleo para asegurar que esté completo antes de su cita.
                             </p>
                         </div>
                     </div>
 
                     <div class="faq-item">
                         <button class="accordion-button" aria-expanded="false">
-                            <span class="faq-question" data-en="What do I need to bring to my appointment?" data-es="¿Qué necesito llevar para mi cita?">¿Qué necesito llevar para mi cita?</span>
+                            <span class="faq-question" data-en="Is Ayuda DMV part of the DMV or the government?" data-es="¿Ayuda DMV es parte del DMV o del gobierno?">
+                                ¿Ayuda DMV es parte del DMV o del gobierno?
+                            </span>
                             <i class="fas fa-chevron-down"></i>
                         </button>
                         <div class="accordion-content">
-                            <p data-en="Always bring: your identification, two proofs of your current Colorado address (like a utility bill), and any documents related to your vehicle or license. If you have doubts, contact us first." data-es="Siempre lleve: su identificación, dos comprobantes de su dirección actual en Colorado (como una factura de servicios), y cualquier documento relacionado con su vehículo o licencia. Si tiene dudas, contáctenos primero.">
-                                Siempre lleve: su identificación, dos comprobantes de su dirección actual en Colorado (como una factura de servicios), y cualquier documento relacionado con su vehículo o licencia. Si tiene dudas, contáctenos primero.
+                            <p data-en="No. We are a private, independent company. We are not the DMV, we do not work for the government, and we are not attorneys. We provide support services to help you manage your own procedures." 
+                               data-es="No. Somos una empresa privada e independiente. No somos el DMV, no trabajamos para el gobierno y no somos abogados. Brindamos servicios de apoyo para ayudarle a gestionar sus propios trámites.">
+                                No. Somos una empresa privada e independiente. No somos el DMV, no trabajamos para el gobierno y no somos abogados. Brindamos servicios de apoyo para ayudarle a gestionar sus propios trámites.
                             </p>
                         </div>
                     </div>
-                    
+
+                    <!-- Category 2: Policies & Compliance -->
+                    <h2 style="color: var(--primary-color); margin: 40px 0 25px; font-size: 1.8rem; border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">
+                        <span data-en="2. Policies & Compliance" data-es="2. Políticas y Cumplimiento">2. Políticas y Cumplimiento</span>
+                    </h2>
+
                     <div class="faq-item">
                         <button class="accordion-button" aria-expanded="false">
-                            <span class="faq-question" data-en="How do payments and deposits work?" data-es="¿Cómo funcionan los pagos y depósitos?">¿Cómo funcionan los pagos y depósitos?</span>
+                            <span class="faq-question" data-en="Do you offer transportation to the DMV?" data-es="¿Ofrecen transporte al DMV?">
+                                ¿Ofrecen transporte al DMV?
+                            </span>
                             <i class="fas fa-chevron-down"></i>
                         </button>
                         <div class="accordion-content">
-                            <p data-en="If your service is in-person (like accompaniment), we charge 100% upfront. For remote services (like document preparation), we require a non-refundable 50% deposit, and the remainder is paid upon service completion." data-es="Si su servicio es en persona (como acompañamiento), cobramos el 100% por adelantado. Para servicios remotos (como preparación de documentos), requerimos un depósito no reembolsable del 50%, y el resto se paga al completar el servicio.">
-                                Si su servicio es en persona (como acompañamiento), cobramos el 100% por adelantado. Para servicios remotos (como preparación de documentos), requerimos un depósito no reembolsable del 50%, y el resto se paga al completar el servicio.
+                            <p data-en="No. We do not provide transportation or livery services. We can meet you at a public location or your home to complete your documents, but you are responsible for your own transportation to government offices." 
+                               data-es="No. No proporcionamos servicios de transporte. Podemos reunirnos con usted en un lugar público o en su hogar para completar sus documentos, pero usted es responsable de su propio transporte a las oficinas gubernamentales.">
+                                No. No proporcionamos servicios de transporte. Podemos reunirnos con usted en un lugar público o en su hogar para completar sus documentos, pero usted es responsable de su propio transporte a las oficinas gubernamentales.
                             </p>
                         </div>
                     </div>
 
                     <div class="faq-item">
                         <button class="accordion-button" aria-expanded="false">
-                            <span class="faq-question" data-en="What happens if I need to cancel or reschedule?" data-es="¿Qué pasa si necesito cancelar o reprogramar?">¿Qué pasa si necesito cancelar o reprogramar?</span>
+                            <span class="faq-question" data-en="Can you go to the DMV in my place?" data-es="¿Pueden ir al DMV en mi lugar?">
+                                ¿Pueden ir al DMV en mi lugar?
+                            </span>
                             <i class="fas fa-chevron-down"></i>
                         </button>
                         <div class="accordion-content">
-                            <p data-en="You must notify us 24 hours in advance to reschedule at no cost. If you cancel or reschedule with less than 24 hours' notice, you will lose your 50% deposit (or the minimum deposit if the service was 100% pre-paid)." data-es="Debe avisarnos con 24 horas de antelación para reprogramar sin costo. Si cancela o reprograma con menos de 24 horas, perderá su depósito del 50% (o el depósito mínimo si el servicio era 100% pagado).">
-                                Debe avisarnos con 24 horas de antelación para reprogramar sin costo. Si cancela o reprograma con menos de 24 horas, perderá su depósito del 50% (o el depósito mínimo si el servicio era 100% pagado).
+                            <p data-en="No. We do not represent clients at government offices. Our service is limited to helping you prepare your documents and providing notary services before your visit. You must be present for your own transactions." 
+                               data-es="No. No representamos a clientes ante las oficinas gubernamentales. Nuestro servicio se limita a ayudarle a preparar sus documentos y proporcionar servicios de notaría antes de su visita. Usted debe estar presente para sus propios trámites.">
+                                No. No representamos a clientes ante las oficinas gubernamentales. Nuestro servicio se limita a ayudarle a preparar sus documentos y proporcionar servicios de notaría antes de su visita. Usted debe estar presente para sus propios trámites.
                             </p>
                         </div>
                     </div>
 
                     <div class="faq-item">
                         <button class="accordion-button" aria-expanded="false">
-                            <span class="faq-question" data-en="What are DMV fees and how are they paid?" data-es="¿Qué son las tarifas del DMV y cómo se pagan?">¿Qué son las tarifas del DMV y cómo se pagan?</span>
+                            <span class="faq-question" data-en="Can you give me advice on my immigration status or DMV case?" data-es="¿Pueden darme asesoría sobre mi estatus migratorio o mi caso del DMV?">
+                                ¿Pueden darme asesoría sobre mi estatus migratorio o mi caso del DMV?
+                            </span>
                             <i class="fas fa-chevron-down"></i>
                         </button>
                         <div class="accordion-content">
-                            <p data-en="The DMV fees are the mandatory state payments (e.g., for the license card, registration, or fines). These are separate from Ayuda DMV's fees. If we help by paying them in advance, you must reimburse us that amount on the same day." data-es="Las tarifas del DMV son los pagos obligatorios del estado (por ejemplo, por la tarjeta de licencia, el registro o multas). Estas son independientes de nuestros honorarios. Si le ayudamos pagándolas por adelantado, usted debe reembolsarnos ese monto el mismo día.">
-                                Las tarifas del DMV son los pagos obligatorios del estado (por ejemplo, por la tarjeta de licencia, el registro o multas). Estas son independientes de nuestros honorarios. Si le ayudamos pagándolas por adelantado, usted debe reembolsarnos ese monto el mismo día.
+                            <p data-en="No. We are not attorneys and cannot provide legal advice or opinions on your legal status. We strictly provide clerical assistance (typing what you tell us) and certified translations." 
+                               data-es="No. No somos abogados y no podemos brindar asesoría legal ni opiniones sobre su estatus legal. Estrictamente brindamos asistencia administrativa (escribiendo lo que usted nos indique) y traducciones certificadas.">
+                                No. No somos abogados y no podemos brindar asesoría legal ni opiniones sobre su estatus legal. Estrictamente brindamos asistencia administrativa (escribiendo lo que usted nos indique) y traducciones certificadas.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Category 3: Payments & Logistics -->
+                    <h2 style="color: var(--primary-color); margin: 40px 0 25px; font-size: 1.8rem; border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">
+                        <span data-en="3. Payments & Logistics" data-es="3. Pagos y Logística">3. Pagos y Logística</span>
+                    </h2>
+
+                    <div class="faq-item">
+                        <button class="accordion-button" aria-expanded="false">
+                            <span class="faq-question" data-en="How do payments and mileage fees work?" data-es="¿Cómo funcionan los pagos y las tarifas de millaje?">
+                                ¿Cómo funcionan los pagos y las tarifas de millaje?
+                            </span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <p data-en="All service fees are paid 100% upfront. For mobile services, we charge a mileage fee of $0.65 per mile (round-trip) from Castle Rock. This travel fee is non-refundable once the service provider has traveled to your location." 
+                               data-es="Todas las tarifas de servicio se pagan al 100% por adelantado. Para servicios móviles, cobramos una tarifa de millaje de $0.65 por milla (viaje redondo) desde Castle Rock. Esta tarifa de viaje no es reembolsable una vez que el proveedor de servicios se haya desplazado a su ubicación.">
+                                Todas las tarifas de servicio se pagan al 100% por adelantado. Para servicios móviles, cobramos una tarifa de millaje de $0.65 por milla (viaje redondo) desde Castle Rock. Esta tarifa de viaje no es reembolsable una vez que el proveedor de servicios se haya desplazado a su ubicación.
                             </p>
                         </div>
                     </div>
 
                     <div class="faq-item">
                         <button class="accordion-button" aria-expanded="false">
-                            <span class="faq-question" data-en="Can you take my photo or go to the DMV in my place?" data-es="¿Pueden tomar mi foto o ir al DMV en mi lugar?">¿Pueden tomar mi foto o ir al DMV en mi lugar?</span>
+                            <span class="faq-question" data-en="What happens if I need to cancel or reschedule?" data-es="¿Qué pasa si necesito cancelar o reprogramar?">
+                                ¿Qué pasa si necesito cancelar o reprogramar?
+                            </span>
                             <i class="fas fa-chevron-down"></i>
                         </button>
                         <div class="accordion-content">
-                            <p data-en="In most cases, yes, we can act as your authorized representative with a signed power of attorney form (DR 2175). However, for taking your photo or exam, you must be present. Contact us to see which transactions we can complete for you." data-es="En la mayoría de los casos, sí podemos actuar como su representante autorizado con el formulario de poder legal (DR 2175) firmado. Sin embargo, para tomar su foto o examen, usted debe estar presente. Contáctenos para ver qué trámites podemos hacer por usted.">
-                                En la mayoría de los casos, sí podemos actuar como su representante autorizado con el formulario de poder legal (DR 2175) firmado. Sin embargo, para tomar su foto o examen, usted debe estar presente. Contáctenos para ver qué trámites podemos hacer por usted.
+                            <p data-en="You must notify us 24 hours in advance to reschedule at no cost. If you cancel with less than 24-hours' notice, or if the notary arrives and the signing cannot proceed due to lack of ID, the travel fee is non-refundable." 
+                               data-es="Debe avisarnos con 24 horas de antelación para reprogramar sin costo. Si cancela con menos de 24 horas de antelación, o si el notario llega y la firma no puede proceder por falta de identificación, la tarifa de viaje no es reembolsable.">
+                                Debe avisarnos con 24 horas de antelación para reprogramar sin costo. Si cancela con menos de 24 horas de antelación, o si el notario llega y la firma no puede proceder por falta de identificación, la tarifa de viaje no es reembolsable.
                             </p>
                         </div>
                     </div>
-                    
+
+                    <!-- Category 4: Translations & Notary -->
+                    <h2 style="color: var(--primary-color); margin: 40px 0 25px; font-size: 1.8rem; border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">
+                        <span data-en="4. Translations & Notary" data-es="4. Traducciones y Notaría">4. Traducciones y Notaría</span>
+                    </h2>
+
                     <div class="faq-item">
                         <button class="accordion-button" aria-expanded="false">
-                            <span class="faq-question" data-en="What if I get sick and can't go?" data-es="¿Qué pasa si me enfermo y no puedo ir?">¿Qué pasa si me enfermo y no puedo ir?</span>
+                            <span class="faq-question" data-en="Are your translations accepted by USCIS and the DMV?" data-es="¿Sus traducciones son aceptadas por USCIS y el DMV?">
+                                ¿Sus traducciones son aceptadas por USCIS y el DMV?
+                            </span>
                             <i class="fas fa-chevron-down"></i>
                         </button>
                         <div class="accordion-content">
-                            <p data-en="If you provide reasonable justification (such as a doctor's note) within 3 days, we can reschedule your appointment and move your deposit. If you do not provide any documentation, the 24-hour cancellation policy will apply, and you will lose the deposit." data-es="Si presenta una justificación razonable (como una nota médica) dentro de los 3 días siguientes, podemos reprogramar su cita y mover su depósito. Si no presenta ninguna documentación, se aplicará la política de cancelación de 24 horas y perderá el depósito.">
-                                Si presenta una justificación razonable (como una nota médica) dentro de los 3 días siguientes, podemos reprogramar su cita y mover su depósito. Si no presenta ninguna documentación, se aplicará la política de cancelación de 24 horas y perderá el depósito.
+                            <p data-en="Yes. We provide "Certified Translations," which include a signed Certificate of Accuracy. This is the standard requirement for government agencies for birth certificates and other vital records." 
+                               data-es="Sí. Proporcionamos "Traducciones Certificadas", que incluyen un Certificado de Exactitud firmado. Este es el requisito estándar para las agencias gubernamentales para actas de nacimiento y otros registros vitales.">
+                                Sí. Proporcionamos "Traducciones Certificadas", que incluyen un Certificado de Exactitud firmado. Este es el requisito estándar para las agencias gubernamentales para actas de nacimiento y otros registros vitales.
                             </p>
                         </div>
                     </div>
 
                     <div class="faq-item">
                         <button class="accordion-button" aria-expanded="false">
-                            <span class="faq-question" data-en="How do I contact Ayuda DMV?" data-es="¿Cómo me comunico con Ayuda DMV?">¿Cómo me comunico con Ayuda DMV?</span>
+                            <span class="faq-question" data-en="What language do you work in?" data-es="¿En qué idioma trabajan?">
+                                ¿En qué idioma trabajan?
+                            </span>
                             <i class="fas fa-chevron-down"></i>
                         </button>
                         <div class="accordion-content">
-                            <p data-en="You can call us, send us a message via WhatsApp, or visit our contact page. We respond very quickly!" data-es="Puede llamarnos, enviarnos un mensaje por WhatsApp, o visitar nuestra página de contacto. ¡Respondemos muy rápido!">
-                                Puede llamarnos, enviarnos un mensaje por WhatsApp, o visitar nuestra página de contacto. ¡Respondemos muy rápido!
-                            </p>
-                            <a href="contact.html" class="button-secondary small-button" data-en="Go to Contact Page" data-es="Ir a la Página de Contacto">Ir a la Página de Contacto</a>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <button class="accordion-button" aria-expanded="false">
-                            <span class="faq-question" data-en="What language do you work in?" data-es="¿En qué idioma trabajan?">¿En qué idioma trabajan?</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                        <div class="accordion-content">
-                            <p data-en="All of our services are completely bilingual, in Spanish and English. The website starts in Spanish. If you click the language button (EN/ES), the entire page will switch to English." data-es="Todos nuestros servicios son completamente bilingües, en español e inglés. El sitio web inicia en español. Si hace clic en el botón de idioma (EN/ES), toda la página cambiará a inglés.">
-                                Todos nuestros servicios son completamente bilingües, en español e inglés. El sitio web inicia en español. Si hace clic en el botón de idioma (EN/ES), toda la página cambiará a inglés.
+                            <p data-en="All of our services are 100% bilingual (English and Spanish)." 
+                               data-es="Todos nuestros servicios son 100% bilingües (inglés y español).">
+                                Todos nuestros servicios son 100% bilingües (inglés y español).
                             </p>
                         </div>
                     </div>
@@ -184,66 +231,102 @@
             </div>
         </section>
 
-      <!-- Call to Action -->
-                <div style="text-align: center; margin-top: 50px; padding: 40px 20px; background: linear-gradient(135deg, var(--secondary-color) 0%, var(--secondary-dark) 100%); border-radius: var(--radius-md); color: white;">
-                    <h2 style="color: white; margin-bottom: 20px;" data-en="Ready to Get Started?" data-es="¿Listo para Comenzar?">
-                        ¿Listo para Comenzar?
-                    </h2>
-                    <p style="margin-bottom: 30px; font-size: 1.1rem;" data-en="Contact us today for expert DMV assistance in Spanish and English." data-es="Contáctanos hoy para recibir asistencia experta del DMV en español e inglés.">
-                        Contáctanos hoy para recibir asistencia experta del DMV en español e inglés.
-                    </p>
-                    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                        <a href="tel:3035004122" class="button-cta" style="background: white; color: var(--primary-color);">
-                            <i class="fas fa-phone"></i>
-                            <span data-en="Call Now" data-es="Llamar Ahora">Llamar Ahora</span>
-                        </a>
-                        <a href="https://wa.me/13035004122" target="_blank" class="button-whatsapp">
-                            <i class="fab fa-whatsapp"></i>
-                            <span data-en="WhatsApp Us" data-es="WhatsApp">WhatsApp</span>
-                        </a>
-                    </div>
+        <!-- Call to Action -->
+        <section class="contact-cta-section">
+            <div class="container">
+                <h2 data-en="Still Have Questions?" data-es="¿Todavía Tiene Preguntas?">¿Todavía Tiene Preguntas?</h2>
+                <p data-en="Contact us today and we'll be happy to help!" 
+                   data-es="¡Contáctanos hoy y estaremos felices de ayudarte!">
+                    ¡Contáctanos hoy y estaremos felices de ayudarte!
+                </p>
+                <div class="cta-buttons">
+                    <a href="tel:3035004122" class="button-cta" style="background: white; color: var(--primary-color);">
+                        <i class="fas fa-phone"></i>
+                        <span data-en="Call Now" data-es="Llamar Ahora">Llamar Ahora</span>
+                    </a>
+                    <a href="https://wa.me/13035004122" target="_blank" class="button-whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                        <span data-en="WhatsApp Us" data-es="WhatsApp">WhatsApp</span>
+                    </a>
                 </div>
-
             </div>
         </section>
 
     </main>
 
-<footer class="site-footer">
-  <div class="container">
+    <footer class="site-footer">
+        <div class="container">
+            <p data-en="© 2026 Ayuda DMV. All Rights Reserved. A brand of <a href='https://serviciosquintana.com/' target='_blank'>Servicios Quintana LLC</a>"
+               data-es="© 2026 Ayuda DMV. Todos los derechos reservados. Una marca de <a href='https://serviciosquintana.com/' target='_blank'>Servicios Quintana LLC</a>">
+                © 2026 Ayuda DMV. Todos los derechos reservados. Una marca de 
+                <a href="https://serviciosquintana.com/" target="_blank">Servicios Quintana LLC</a>
+            </p>
 
-    <!-- COPYRIGHT -->
-    <p 
-      data-en="© 2026 Ayuda DMV. All Rights Reserved. A brand of <a href='https://serviciosquintana.com/' target='_blank'>Servicios Quintana LLC</a>"
-      data-es="© 2026 Ayuda DMV. Todos los derechos reservados. Una marca de <a href='https://serviciosquintana.com/' target='_blank'>Servicios Quintana LLC</a>">
-      © 2026 Ayuda DMV. Todos los derechos reservados. Una marca de 
-      <a href="https://serviciosquintana.com/" target="_blank">Servicios Quintana LLC</a>
-    </p>
+            <p data-en="Legal Notice: Ayuda DMV is an independent support service and is not affiliated with the Colorado DMV, USCIS, or any government agency. We assist with document preparation, translation, and administrative guidance. We do not represent clients before any government agency."
+               data-es="Aviso Legal: Ayuda DMV es un servicio de apoyo independiente y no está afiliado al DMV de Colorado, USCIS ni a ninguna agencia gubernamental. Ofrecemos asistencia con preparación de documentos, traducciones y orientación administrativa. No representamos a clientes ante ninguna agencia del gobierno.">
+                Aviso Legal: Ayuda DMV es un servicio de apoyo independiente y no está afiliado al DMV de Colorado, USCIS ni a ninguna agencia gubernamental. Ofrecemos asistencia con preparación de documentos, traducciones y orientación administrativa. No representamos a clientes ante ninguna agencia del gobierno.
+            </p>
 
-    <!-- LEGAL NOTICE -->
-    <p 
-      data-en="Legal Notice: Ayuda DMV is an independent support service and is not affiliated with the Colorado DMV, USCIS, or any government agency. We assist with document preparation, translation, and administrative guidance. We do not represent clients before any government agency."
-      data-es="Aviso Legal: Ayuda DMV es un servicio de apoyo independiente y no está afiliado al DMV de Colorado, USCIS ni a ninguna agencia gubernamental. Ofrecemos asistencia con preparación de documentos, traducciones y orientación administrativa. No representamos a clientes ante ninguna agencia del gobierno.">
-      Aviso Legal: Ayuda DMV es un servicio de apoyo independiente y no está afiliado al DMV de Colorado, USCIS ni a ninguna agencia gubernamental. Ofrecemos asistencia con preparación de documentos, traducciones y orientación administrativa. No representamos a clientes ante ninguna agencia del gobierno.
-    </p>
+            <p data-en="Mandatory Disclosure: I am not an attorney licensed to practice law in the State of Colorado and I may not give legal advice or accept fees for legal advice."
+               data-es="Divulgación Obligatoria: No soy abogado licenciado para ejercer la abogacía en el Estado de Colorado y no puedo dar asesoría legal ni aceptar honorarios por asesoría legal.">
+                Divulgación Obligatoria: No soy abogado licenciado para ejercer la abogacía en el Estado de Colorado y no puedo dar asesoría legal ni aceptar honorarios por asesoría legal.
+            </p>
 
-    <!-- MANDATORY DISCLOSURE -->
-    <p 
-      data-en="Mandatory Disclosure: I am not an attorney licensed to practice law in the State of Colorado and I may not give legal advice or accept fees for legal advice."
-      data-es="Divulgación Obligatoria: No soy abogado licenciado para ejercer la abogacía en el Estado de Colorado y no puedo dar asesoría legal ni aceptar honorarios por asesoría legal.">
-      Divulgación Obligatoria: No soy abogado licenciado para ejercer la abogacía en el Estado de Colorado y no puedo dar asesoría legal ni aceptar honorarios por asesoría legal.
-    </p>
+            <p data-en="Contact: <a href='mailto:info@ayudadmv.com'>info@ayudadmv.com</a> · <a href='tel:3035004122'>(303) 500‑4122</a>"
+               data-es="Contacto: <a href='mailto:info@ayudadmv.com'>info@ayudadmv.com</a> · <a href='tel:3035004122'>(303) 500‑4122</a>">
+                Contacto: <a href="mailto:info@ayudadmv.com">info@ayudadmv.com</a> · <a href="tel:3035004122">(303) 500‑4122</a>
+            </p>
+        </div>
+    </footer>
 
-    <!-- CONTACT -->
-    <p 
-      data-en="Contact: <a href='mailto:info@ayudadmv.com'>info@ayudadmv.com</a> · <a href='tel:3035004122'>(303) 500‑4122</a>"
-      data-es="Contacto: <a href='mailto:info@ayudadmv.com'>info@ayudadmv.com</a> · <a href='tel:3035004122'>(303) 500‑4122</a>">
-      Contacto: <a href="mailto:info@ayudadmv.com">info@ayudadmv.com</a> · <a href="tel:3035004122">(303) 500‑4122</a>
-    </p>
+    <script src="js/global.js"></script>
+    <script>
+        // Expand/Collapse All FAQ Items
+        (function() {
+            const toggleAllBtn = document.getElementById('toggle-all-faq');
+            const accordionButtons = document.querySelectorAll('.accordion-button');
+            let allExpanded = false;
 
-  </div>
-</footer>
+            if (toggleAllBtn && accordionButtons.length > 0) {
+                toggleAllBtn.addEventListener('click', () => {
+                    allExpanded = !allExpanded;
+                    
+                    accordionButtons.forEach(button => {
+                        const content = button.nextElementSibling;
+                        const icon = button.querySelector('i');
+                        
+                        button.setAttribute('aria-expanded', allExpanded);
+                        
+                        if (allExpanded) {
+                            content.style.maxHeight = (content.scrollHeight + 50) + 'px';
+                            content.style.padding = '20px';
+                            if (icon) icon.style.transform = 'rotate(180deg)';
+                        } else {
+                            content.style.maxHeight = '0';
+                            content.style.padding = '0';
+                            if (icon) icon.style.transform = 'rotate(0deg)';
+                        }
+                    });
 
-<script src="js/global.js"></script>
+                    // Update button text and icon
+                    const btnIcon = toggleAllBtn.querySelector('i');
+                    const btnText = toggleAllBtn.querySelector('span');
+                    const currentLang = localStorage.getItem('ayudadmv_lang') || 'es';
+                    
+                    if (allExpanded) {
+                        btnIcon.className = 'fas fa-chevron-up';
+                        btnText.textContent = currentLang === 'es' ? 'Contraer Todo' : 'Collapse All';
+                        btnText.setAttribute('data-es', 'Contraer Todo');
+                        btnText.setAttribute('data-en', 'Collapse All');
+                    } else {
+                        btnIcon.className = 'fas fa-chevron-down';
+                        btnText.textContent = currentLang === 'es' ? 'Expandir Todo' : 'Expand All';
+                        btnText.setAttribute('data-es', 'Expandir Todo');
+                        btnText.setAttribute('data-en', 'Expand All');
+                    }
+                });
+            }
+        })();
+    </script>
 </body>
 </html>
