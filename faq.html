@@ -46,7 +46,6 @@
     </header>
 
     <main>
-        <!-- Hero Section -->
         <section class="hero-subpage">
             <div class="container">
                 <h1 data-en="Frequently Asked Questions" data-es="Preguntas Frecuentes">
@@ -58,11 +57,9 @@
             </div>
         </section>
 
-        <!-- FAQ Section -->
         <section class="faq-section">
             <div class="container">
                 
-                <!-- Expand/Collapse All Button -->
                 <div style="text-align: center; margin-bottom: 30px;">
                     <button id="toggle-all-faq" class="button-secondary" style="display: inline-flex; align-items: center; gap: 8px;">
                         <i class="fas fa-chevron-down"></i>
@@ -72,7 +69,6 @@
 
                 <div class="faq-accordion">
 
-                    <!-- Category 1: General Services -->
                     <h2 style="color: var(--primary-color); margin: 40px 0 25px; font-size: 1.8rem; border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">
                         <span data-en="1. General Services" data-es="1. Servicios Generales">1. Servicios Generales</span>
                     </h2>
@@ -107,7 +103,6 @@
                         </div>
                     </div>
 
-                    <!-- Category 2: Policies & Compliance -->
                     <h2 style="color: var(--primary-color); margin: 40px 0 25px; font-size: 1.8rem; border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">
                         <span data-en="2. Policies & Compliance" data-es="2. Políticas y Cumplimiento">2. Políticas y Cumplimiento</span>
                     </h2>
@@ -157,7 +152,6 @@
                         </div>
                     </div>
 
-                    <!-- Category 3: Payments & Logistics -->
                     <h2 style="color: var(--primary-color); margin: 40px 0 25px; font-size: 1.8rem; border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">
                         <span data-en="3. Payments & Logistics" data-es="3. Pagos y Logística">3. Pagos y Logística</span>
                     </h2>
@@ -192,7 +186,6 @@
                         </div>
                     </div>
 
-                    <!-- Category 4: Translations & Notary -->
                     <h2 style="color: var(--primary-color); margin: 40px 0 25px; font-size: 1.8rem; border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">
                         <span data-en="4. Translations & Notary" data-es="4. Traducciones y Notaría">4. Traducciones y Notaría</span>
                     </h2>
@@ -205,8 +198,8 @@
                             <i class="fas fa-chevron-down"></i>
                         </button>
                         <div class="accordion-content">
-                            <p data-en="Yes. We provide "Certified Translations," which include a signed Certificate of Accuracy. This is the standard requirement for government agencies for birth certificates and other vital records." 
-                               data-es="Sí. Proporcionamos "Traducciones Certificadas", que incluyen un Certificado de Exactitud firmado. Este es el requisito estándar para las agencias gubernamentales para actas de nacimiento y otros registros vitales.">
+                            <p data-en="Yes. We provide 'Certified Translations,' which include a signed Certificate of Accuracy. This is the standard requirement for government agencies for birth certificates and other vital records." 
+                               data-es="Sí. Proporcionamos 'Traducciones Certificadas', que incluyen un Certificado de Exactitud firmado. Este es el requisito estándar para las agencias gubernamentales para actas de nacimiento y otros registros vitales.">
                                 Sí. Proporcionamos "Traducciones Certificadas", que incluyen un Certificado de Exactitud firmado. Este es el requisito estándar para las agencias gubernamentales para actas de nacimiento y otros registros vitales.
                             </p>
                         </div>
@@ -231,7 +224,6 @@
             </div>
         </section>
 
-        <!-- Call to Action -->
         <section class="contact-cta-section">
             <div class="container">
                 <h2 data-en="Still Have Questions?" data-es="¿Todavía Tiene Preguntas?">¿Todavía Tiene Preguntas?</h2>
@@ -281,7 +273,7 @@
 
     <script src="js/global.js"></script>
     <script>
-        // Expand/Collapse All FAQ Items
+        // Expand/Collapse All FAQ Items Logic
         (function() {
             const toggleAllBtn = document.getElementById('toggle-all-faq');
             const accordionButtons = document.querySelectorAll('.accordion-button');
@@ -308,21 +300,28 @@
                         }
                     });
 
-                    // Update button text and icon
+                    // Update button text and icon with Language Support
                     const btnIcon = toggleAllBtn.querySelector('i');
                     const btnText = toggleAllBtn.querySelector('span');
                     const currentLang = localStorage.getItem('ayudadmv_lang') || 'es';
                     
                     if (allExpanded) {
                         btnIcon.className = 'fas fa-chevron-up';
-                        btnText.textContent = currentLang === 'es' ? 'Contraer Todo' : 'Collapse All';
                         btnText.setAttribute('data-es', 'Contraer Todo');
                         btnText.setAttribute('data-en', 'Collapse All');
+                        
+                        // Immediate text update based on current state
+                        if (currentLang === 'es') btnText.textContent = 'Contraer Todo';
+                        else btnText.textContent = 'Collapse All';
+                        
                     } else {
                         btnIcon.className = 'fas fa-chevron-down';
-                        btnText.textContent = currentLang === 'es' ? 'Expandir Todo' : 'Expand All';
                         btnText.setAttribute('data-es', 'Expandir Todo');
                         btnText.setAttribute('data-en', 'Expand All');
+                        
+                        // Immediate text update based on current state
+                        if (currentLang === 'es') btnText.textContent = 'Expandir Todo';
+                        else btnText.textContent = 'Expand All';
                     }
                 });
             }
