@@ -16,7 +16,10 @@
                     <img src="ayudaDMVLogo.jpg" alt="Ayuda DMV Logo">
                 </a>
             </div>
-            
+
+            <!-- Lang toggle OUTSIDE .nav-menu so it stays visible on mobile -->
+            <button id="lang-toggle" class="lang-toggle-button" aria-label="Switch Language">EN</button>
+
             <nav id="main-navigation" class="nav-menu" role="navigation">
                 <ul class="nav-links">
                     <li><a href="index.html" data-i18n="nav.home">Inicio</a></li>
@@ -25,8 +28,6 @@
                     <li><a href="faq.html" class="active" data-i18n="nav.faq">FAQ</a></li>
                     <li><a href="contact.html" data-i18n="nav.contact">Contacto</a></li>
                 </ul>
-                
-                <button id="lang-toggle" class="lang-toggle-button" aria-label="Switch Language">EN</button>
             </nav>
 
             <div class="quick-contact">
@@ -59,7 +60,7 @@
 
         <section class="faq-section">
             <div class="container">
-                
+
                 <div style="text-align: center; margin-bottom: 30px;">
                     <button id="toggle-all-faq" class="button-secondary" style="display: inline-flex; align-items: center; gap: 8px;">
                         <i class="fas fa-chevron-down"></i>
@@ -337,61 +338,64 @@
         </div>
     </footer>
 
+    <!-- BACK TO TOP BUTTON -->
+    <button id="back-to-top"
+            class="back-to-top-btn"
+            aria-label="Back to top"
+            data-en="↑ Top"
+            data-es="↑ Arriba">
+        ↑ Arriba
+    </button>
+
     <script src="js/global.js"></script>
     <script>
-        // Expand/Collapse All FAQ Items Logic
-        (function() {
+        // Expand/Collapse All FAQ Items
+        (function () {
             const toggleAllBtn = document.getElementById('toggle-all-faq');
             const accordionButtons = document.querySelectorAll('.accordion-button');
             let allExpanded = false;
 
-            if (toggleAllBtn && accordionButtons.length > 0) {
-                toggleAllBtn.addEventListener('click', () => {
-                    allExpanded = !allExpanded;
-                    
-                    accordionButtons.forEach(button => {
-                        const content = button.nextElementSibling;
-                        const icon = button.querySelector('i');
-                        
-                        button.setAttribute('aria-expanded', allExpanded);
-                        
-                        if (allExpanded) {
-                            content.style.maxHeight = (content.scrollHeight + 50) + 'px';
-                            content.style.padding = '20px';
-                            if (icon) icon.style.transform = 'rotate(180deg)';
-                        } else {
-                            content.style.maxHeight = '0';
-                            content.style.padding = '0';
-                            if (icon) icon.style.transform = 'rotate(0deg)';
-                        }
-                    });
+            if (!toggleAllBtn || !accordionButtons.length) return;
 
-                    // Update button text and icon with Language Support
-                    const btnIcon = toggleAllBtn.querySelector('i');
-                    const btnText = toggleAllBtn.querySelector('span');
-                    const currentLang = localStorage.getItem('ayudadmv_lang') || 'es';
-                    
+            toggleAllBtn.addEventListener('click', () => {
+                allExpanded = !allExpanded;
+
+                accordionButtons.forEach(button => {
+                    const content = button.nextElementSibling;
+                    const icon    = button.querySelector('i');
+
+                    button.setAttribute('aria-expanded', String(allExpanded));
+
                     if (allExpanded) {
-                        btnIcon.className = 'fas fa-chevron-up';
-                        btnText.setAttribute('data-es', 'Contraer Todo');
-                        btnText.setAttribute('data-en', 'Collapse All');
-                        
-                        // Immediate text update based on current state
-                        if (currentLang === 'es') btnText.textContent = 'Contraer Todo';
-                        else btnText.textContent = 'Collapse All';
-                        
+                        content.style.maxHeight = (content.scrollHeight + 50) + 'px';
+                        content.style.padding   = '20px';
+                        if (icon) icon.style.transform = 'rotate(180deg)';
                     } else {
-                        btnIcon.className = 'fas fa-chevron-down';
-                        btnText.setAttribute('data-es', 'Expandir Todo');
-                        btnText.setAttribute('data-en', 'Expand All');
-                        
-                        // Immediate text update based on current state
-                        if (currentLang === 'es') btnText.textContent = 'Expandir Todo';
-                        else btnText.textContent = 'Expand All';
+                        content.style.maxHeight = '0';
+                        content.style.padding   = '0';
+                        if (icon) icon.style.transform = 'rotate(0deg)';
                     }
                 });
-            }
+
+                // Update toggle button label & icon
+                const btnIcon = toggleAllBtn.querySelector('i');
+                const btnText = toggleAllBtn.querySelector('span');
+                const lang    = localStorage.getItem('ayudadmv_lang') || 'es';
+
+                if (allExpanded) {
+                    btnIcon.className = 'fas fa-chevron-up';
+                    btnText.setAttribute('data-es', 'Contraer Todo');
+                    btnText.setAttribute('data-en', 'Collapse All');
+                    btnText.textContent = lang === 'es' ? 'Contraer Todo' : 'Collapse All';
+                } else {
+                    btnIcon.className = 'fas fa-chevron-down';
+                    btnText.setAttribute('data-es', 'Expandir Todo');
+                    btnText.setAttribute('data-en', 'Expand All');
+                    btnText.textContent = lang === 'es' ? 'Expandir Todo' : 'Expand All';
+                }
+            });
         })();
     </script>
+
 </body>
 </html>
