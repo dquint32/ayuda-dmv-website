@@ -16,7 +16,10 @@
                     <img src="ayudaDMVLogo.jpg" alt="Ayuda DMV Logo">
                 </a>
             </div>
-            
+
+            <!-- Lang toggle OUTSIDE .nav-menu so it stays visible on mobile -->
+            <button id="lang-toggle" class="lang-toggle-button" aria-label="Switch Language">EN</button>
+
             <nav id="main-navigation" class="nav-menu" role="navigation">
                 <ul class="nav-links">
                     <li><a href="index.html" data-i18n="nav.home">Inicio</a></li>
@@ -25,8 +28,6 @@
                     <li><a href="faq.html" data-i18n="nav.faq">FAQ</a></li>
                     <li><a href="contact.html" data-i18n="nav.contact">Contacto</a></li>
                 </ul>
-                
-                <button id="lang-toggle" class="lang-toggle-button" aria-label="Switch Language">EN</button>
             </nav>
 
             <div class="quick-contact">
@@ -108,6 +109,9 @@
                     </p>
                 </div>
 
+                <!-- ============================================ -->
+                <!-- SECTION 1: DMV DOCUMENT PREPARATION          -->
+                <!-- ============================================ -->
                 <div class="service-category" id="dmv">
                     <h2 class="category-title">
                         <i class="fas fa-file-alt"></i>
@@ -185,6 +189,9 @@
                     </ul>
                 </div>
 
+                <!-- ============================================ -->
+                <!-- SECTION 2: DMV PROXY SERVICES                -->
+                <!-- ============================================ -->
                 <div class="service-category" id="proxy">
                     <h2 class="category-title">
                         <i class="fas fa-user-check"></i>
@@ -209,6 +216,7 @@
                         </ul>
                     </div>
 
+                    <!-- Package 1 -->
                     <div style="margin-top: 50px;">
                         <h3 style="color: var(--primary-color); font-size: 1.8rem; margin-bottom: 25px; border-bottom: 2px solid var(--secondary-color); padding-bottom: 10px;">
                             <span data-en="Package 1: Standard DMV Proxy Package" data-es="Paquete 1: Paquete Estándar de Representante del DMV">Paquete 1: Paquete Estándar de Representante del DMV</span>
@@ -279,6 +287,7 @@
                         </p>
                     </div>
 
+                    <!-- Package 2 -->
                     <div style="margin-top: 50px;">
                         <h3 style="color: var(--primary-color); font-size: 1.8rem; margin-bottom: 25px; border-bottom: 2px solid var(--secondary-color); padding-bottom: 10px;">
                             <span data-en="Package 2: Out-of-State Title Transfer Proxy Package" data-es="Paquete 2: Paquete de Representante para Transferencia de Título Fuera del Estado">Paquete 2: Paquete de Representante para Transferencia de Título Fuera del Estado</span>
@@ -345,6 +354,7 @@
                         </p>
                     </div>
 
+                    <!-- Package 3 -->
                     <div style="margin-top: 50px;">
                         <h3 style="color: var(--primary-color); font-size: 1.8rem; margin-bottom: 25px; border-bottom: 2px solid var(--secondary-color); padding-bottom: 10px;">
                             <span data-en="Package 3: Premium Out-of-State Title Transfer Package" data-es="Paquete 3: Paquete Premium de Transferencia de Título Fuera del Estado">Paquete 3: Paquete Premium de Transferencia de Título Fuera del Estado</span>
@@ -422,6 +432,9 @@
                     </div>
                 </div>
 
+                <!-- ============================================ -->
+                <!-- SECTION 3: NOTARY SERVICES                   -->
+                <!-- ============================================ -->
                 <div class="service-category" id="notary">
                     <h2 class="category-title">
                         <i class="fas fa-stamp"></i>
@@ -469,6 +482,9 @@
                     </ul>
                 </div>
 
+                <!-- ============================================ -->
+                <!-- SECTION 4: MOBILE & CONVENIENCE FEES         -->
+                <!-- ============================================ -->
                 <div class="service-category" id="mobile">
                     <h2 class="category-title">
                         <i class="fas fa-car"></i>
@@ -533,6 +549,9 @@
                     </p>
                 </div>
 
+                <!-- ============================================ -->
+                <!-- SECTION 5: OPTIONAL ADD-ONS                  -->
+                <!-- ============================================ -->
                 <div class="service-category" id="addons">
                     <h2 class="category-title">
                         <i class="fas fa-plus-circle"></i>
@@ -580,6 +599,9 @@
                     </table>
                 </div>
 
+                <!-- ============================================ -->
+                <!-- SECTION 6: SAME-DAY RUSH SERVICES            -->
+                <!-- ============================================ -->
                 <div class="service-category" id="rush">
                     <h2 class="category-title">
                         <i class="fas fa-bolt"></i>
@@ -623,6 +645,9 @@
                     </table>
                 </div>
 
+                <!-- ============================================ -->
+                <!-- SECTION 7: CERTIFIED TRANSLATIONS            -->
+                <!-- ============================================ -->
                 <div class="service-category" id="translations">
                     <h2 class="category-title">
                         <i class="fas fa-language"></i>
@@ -653,9 +678,9 @@
                     </ul>
                 </div>
 
-                <!-- ================================================ -->
-                <!-- SECTION 8: U.S. PASSPORT SUPPORT -->
-                <!-- ================================================ -->
+                <!-- ============================================ -->
+                <!-- SECTION 8: U.S. PASSPORT SUPPORT             -->
+                <!-- ============================================ -->
                 <div class="service-category" id="passport">
                     <h2 class="category-title">
                         <i class="fas fa-passport"></i>
@@ -795,10 +820,10 @@
                         </span>
                     </p>
                 </div>
-                <!-- ================================================ -->
-                <!-- END SECTION 8: PASSPORT -->
-                <!-- ================================================ -->
 
+                <!-- ============================================ -->
+                <!-- SECTION 9: BUSINESS POLICIES                 -->
+                <!-- ============================================ -->
                 <div class="service-category" id="policies">
                     <h2 class="category-title">
                         <i class="fas fa-info-circle"></i>
@@ -839,7 +864,6 @@
                     <i class="fas fa-gavel"></i>
                     <span data-en="Important Legal Reminders" data-es="Recordatorios Legales Importantes">Recordatorios Legales Importantes</span>
                 </h3>
-                
                 <ul style="list-style: disc; margin-left: 25px; line-height: 1.8; color: #666;">
                     <li data-en="We are not attorneys and cannot provide legal advice." 
                         data-es="No somos abogados y no podemos proporcionar asesoría legal.">
@@ -889,7 +913,7 @@
 
     <footer class="site-footer">
         <div class="container">
-            
+
             <p data-en="© 2026 Ayuda DMV. All Rights Reserved. A brand of Servicios Quintana LLC"
                data-es="© 2026 Ayuda DMV. Todos los derechos reservados. Una marca de Servicios Quintana LLC">
                 © 2026 Ayuda DMV. Todos los derechos reservados. Una marca de Servicios Quintana LLC
@@ -914,8 +938,18 @@
 ¿Preguntas? Contáctenos en {email} o {phone}.
                 </span>
             </p>
+
         </div>
     </footer>
+
+    <!-- BACK TO TOP BUTTON -->
+    <button id="back-to-top"
+            class="back-to-top-btn"
+            aria-label="Back to top"
+            data-en="↑ Top"
+            data-es="↑ Arriba">
+        ↑ Arriba
+    </button>
 
     <script src="js/global.js"></script>
 
