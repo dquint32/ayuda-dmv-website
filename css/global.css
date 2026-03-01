@@ -1,40 +1,40 @@
 /* ========================================== */
-/* AYUDA DMV - GLOBAL STYLESHEET */
-/* Version: 6.4 - Consistent Styling All Pages */
+/* AYUDA DMV - GLOBAL STYLESHEET              */
+/* Version: 7.0 - Refactored & Deduplicated  */
 /* ========================================== */
 
 /* ========================================== */
-/* 1. CSS VARIABLES */
+/* 1. CSS VARIABLES                           */
 /* ========================================== */
 :root {
   /* Brand Colors */
-  --primary-color: #1a4d7a;       /* Navy Blue */
-  --primary-dark: #0d2b4a;
-  --secondary-color: #d67449;     /* Burnt Orange */
-  --secondary-dark: #b85a34;
-  --accent-color: #f4a261;
+  --primary-color:   #1a4d7a;   /* Navy Blue   */
+  --primary-dark:    #0d2b4a;
+  --secondary-color: #d67449;   /* Burnt Orange */
+  --secondary-dark:  #b85a34;
+  --accent-color:    #f4a261;
 
   /* Functional Colors */
-  --whatsapp-color: #25d366;
-  --whatsapp-hover: #128c7e;
-  --text-primary: #333333;
-  --text-secondary: #555555;
-  --bg-white: #ffffff;
-  --bg-light: #f4f4f4;
-  --border-color: #dddddd;
+  --whatsapp-color:  #25d366;
+  --whatsapp-hover:  #128c7e;
+  --text-primary:    #333333;
+  --text-secondary:  #555555;
+  --bg-white:        #ffffff;
+  --bg-light:        #f4f4f4;
+  --border-color:    #dddddd;
 
   /* Spacing & Sizes */
-  --header-height: 80px;
-  --container-width: 1200px;
-  --radius-md: 8px;
-  --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
-  --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+  --header-height:    80px;
+  --container-width:  1200px;
+  --radius-md:        8px;
+  --shadow-sm:        0 2px 4px rgba(0,0,0,0.1);
+  --shadow-md:        0 4px 6px rgba(0,0,0,0.1);
 }
 
 /* ========================================== */
-/* 2. RESET & BASE STYLES */
+/* 2. RESET & BASE STYLES                     */
 /* ========================================== */
-* {
+*, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -51,14 +51,14 @@ body {
 a {
   text-decoration: none;
   color: inherit;
-  transition: 0.3s ease;
+  transition: color 0.3s ease;
 }
 
-ul { list-style: none; }
+ul  { list-style: none; }
 img { max-width: 100%; height: auto; }
 
 /* ========================================== */
-/* 3. UTILITY CLASSES */
+/* 3. UTILITY CLASSES                         */
 /* ========================================== */
 .container {
   max-width: var(--container-width);
@@ -67,14 +67,18 @@ img { max-width: 100%; height: auto; }
   width: 100%;
 }
 
-.text-center { text-align: center; }
-.mt-medium { margin-top: 2rem; }
-.mb-medium { margin-bottom: 2rem; }
+.text-center  { text-align: center; }
+.mt-medium    { margin-top: 2rem; }
+.mb-medium    { margin-bottom: 2rem; }
 
 /* ========================================== */
-/* 4. BUTTONS */
+/* 4. BUTTONS                                 */
 /* ========================================== */
-.button-primary, .button-secondary, .button-whatsapp, .button-cta {
+
+/* --- Shared base for all button variants --- */
+.button-primary,
+.button-secondary,
+.button-whatsapp {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -82,11 +86,44 @@ img { max-width: 100%; height: auto; }
   padding: 10px 20px;
   border-radius: var(--radius-md);
   font-weight: 600;
+  font-size: 1rem;
+  font-family: inherit;
   cursor: pointer;
   border: none;
-  font-size: 1rem;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
   white-space: nowrap;
+}
+
+/* --- .button-cta: merged canonical rule (overrides the old inline-flex base) --- */
+/* The original section-4 definition was fully superseded by the "fix" block.      */
+/* This single rule captures the intended final state.                             */
+.button-cta {
+  display: inline-block;
+  text-align: center;
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 1.2rem;
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background-color: var(--secondary-color);
+  color: white;
+  box-shadow: var(--shadow-md);
+  line-height: 1.4;
+  /* Allow text to wrap on small screens */
+  white-space: normal;
+  height: auto;
+  min-height: 44px;
+  max-width: 90%;
+  width: fit-content;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.button-cta:hover {
+  background-color: var(--secondary-dark);
+  transform: scale(1.05);
 }
 
 .button-primary {
@@ -107,18 +144,6 @@ img { max-width: 100%; height: auto; }
   transform: translateY(-2px);
 }
 
-.button-cta {
-  background-color: var(--secondary-color);
-  color: white;
-  padding: 15px 30px;
-  font-size: 1.2rem;
-  box-shadow: var(--shadow-md);
-}
-.button-cta:hover {
-  background-color: var(--secondary-dark);
-  transform: scale(1.05);
-}
-
 .button-secondary {
   background-color: transparent;
   border: 2px solid var(--primary-color);
@@ -130,14 +155,14 @@ img { max-width: 100%; height: auto; }
 }
 
 .small-button {
+  display: inline-block;
   padding: 8px 16px;
   font-size: 0.9rem;
   margin-top: 10px;
-  display: inline-block;
 }
 
 /* ========================================== */
-/* 5. STICKY HEADER & NAVIGATION */
+/* 5. STICKY HEADER & NAVIGATION              */
 /* ========================================== */
 .sticky-header {
   position: fixed;
@@ -150,7 +175,7 @@ img { max-width: 100%; height: auto; }
   z-index: 1000;
   display: flex;
   align-items: center;
-  transition: height 0.3s ease;
+  transition: height 0.3s ease, box-shadow 0.3s ease;
 }
 
 .sticky-header.scrolled {
@@ -160,12 +185,14 @@ img { max-width: 100%; height: auto; }
 
 .header-content {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  gap: 8px;
   height: 100%;
   width: 100%;
 }
 
+/* Logo */
 .logo img {
   height: 60px;
   width: 60px;
@@ -173,7 +200,8 @@ img { max-width: 100%; height: auto; }
   border-radius: 50%;
   border: 3px solid var(--primary-color);
   box-shadow: var(--shadow-md);
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease,
+              height 0.3s ease, width 0.3s ease;
 }
 
 .logo img:hover {
@@ -187,6 +215,7 @@ img { max-width: 100%; height: auto; }
   width: 50px;
 }
 
+/* Nav menu */
 .nav-menu {
   display: flex;
   align-items: center;
@@ -203,14 +232,17 @@ img { max-width: 100%; height: auto; }
   color: var(--primary-color);
   font-size: 1rem;
   padding: 5px;
+  border-bottom: 2px solid transparent;
+  transition: color 0.3s ease, border-color 0.3s ease;
 }
 
 .nav-links a:hover,
 .nav-links a.active {
   color: var(--secondary-color);
-  border-bottom: 2px solid var(--secondary-color);
+  border-bottom-color: var(--secondary-color);
 }
 
+/* Quick contact (call + WhatsApp) */
 .quick-contact {
   display: flex;
   align-items: center;
@@ -231,7 +263,10 @@ img { max-width: 100%; height: auto; }
   font-size: 1.5rem;
 }
 
+/* --- Language toggle: merged (base + flex order for always-visible positioning) --- */
 .lang-toggle-button {
+  order: 2;
+  flex-shrink: 0;
   background: none;
   border: 2px solid var(--primary-color);
   color: var(--primary-color);
@@ -239,8 +274,9 @@ img { max-width: 100%; height: auto; }
   border-radius: 4px;
   cursor: pointer;
   font-weight: bold;
+  font-family: inherit;
   margin-left: 10px;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
 .lang-toggle-button:hover {
@@ -249,6 +285,7 @@ img { max-width: 100%; height: auto; }
   transform: scale(1.05);
 }
 
+/* Hamburger — hidden on desktop */
 .menu-toggle {
   display: none;
   background: none;
@@ -256,18 +293,17 @@ img { max-width: 100%; height: auto; }
   font-size: 1.8rem;
   color: var(--primary-color);
   cursor: pointer;
-  margin-left: 15px;
+  /* margin-left: auto is applied at ≤992px breakpoint below */
 }
 
 /* ========================================== */
-/* 6. HERO SECTIONS (HOME & SUBPAGES) */
+/* 6. HERO SECTIONS                           */
 /* ========================================== */
 
-/* Main Hero Section (Home Page) */
+/* Home hero */
 .hero-section {
-  background: linear-gradient(rgba(26, 77, 122, 0.9), rgba(26, 77, 122, 0.8)), url('../images/hero-bg.jpg');
-  background-size: cover;
-  background-position: center;
+  background: linear-gradient(rgba(26,77,122,0.9), rgba(26,77,122,0.8)),
+              url('../images/hero-bg.jpg') center/cover no-repeat;
   color: white;
   text-align: center;
   padding: 100px 20px;
@@ -291,7 +327,7 @@ img { max-width: 100%; height: auto; }
   max-width: 250px;
   height: auto;
   border-radius: 50%;
-  border: 5px solid rgba(255, 255, 255, 0.3);
+  border: 5px solid rgba(255,255,255,0.3);
   box-shadow: 0 15px 40px rgba(0,0,0,0.4);
   transition: transform 0.5s ease;
 }
@@ -302,8 +338,8 @@ img { max-width: 100%; height: auto; }
 
 .hero-title {
   font-size: 2.5rem;
-  margin-bottom: 20px;
   font-weight: 700;
+  margin-bottom: 20px;
   text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
 }
 
@@ -313,7 +349,7 @@ img { max-width: 100%; height: auto; }
   opacity: 0.9;
 }
 
-/* Subpage Hero Section (Services, About, FAQ, Contact) */
+/* Subpage hero (Services, About, FAQ, Contact) */
 .hero-subpage {
   background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
   color: white;
@@ -330,18 +366,17 @@ img { max-width: 100%; height: auto; }
   font-weight: 700;
   color: white;
   text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-  margin: 0 0 15px 0;
+  margin: 0 0 15px;
 }
 
 .hero-subpage .hero-subtitle {
   font-size: 1.15rem;
-  margin: 0;
   opacity: 0.9;
   max-width: 800px;
   margin: 0 auto;
 }
 
-/* Page Header (Alternative style if needed) */
+/* Alternative page header */
 .page-header {
   background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
   color: white;
@@ -357,7 +392,7 @@ img { max-width: 100%; height: auto; }
 }
 
 /* ========================================== */
-/* 7. SERVICES PREVIEW SECTION (HOME PAGE) */
+/* 7. SERVICES PREVIEW (HOME)                 */
 /* ========================================== */
 .services-preview-section {
   padding: 60px 20px;
@@ -368,7 +403,7 @@ img { max-width: 100%; height: auto; }
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 25px;
-  max-width: 1200px;
+  max-width: var(--container-width);
   margin: 0 auto;
 }
 
@@ -381,7 +416,7 @@ img { max-width: 100%; height: auto; }
   text-align: center;
   box-shadow: var(--shadow-sm);
   color: var(--text-primary);
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .service-card i {
@@ -412,11 +447,10 @@ img { max-width: 100%; height: auto; }
 }
 
 /* ========================================== */
-/* 8. SERVICES PAGE SPECIFIC */
+/* 8. SERVICES PAGE                           */
 /* ========================================== */
-
-.service-category { 
-  margin-bottom: 60px; 
+.service-category {
+  margin-bottom: 60px;
 }
 
 .category-title {
@@ -429,7 +463,6 @@ img { max-width: 100%; height: auto; }
   gap: 10px;
 }
 
-/* Pricing Tables */
 .pricing-table {
   width: 100%;
   border-collapse: collapse;
@@ -450,8 +483,8 @@ img { max-width: 100%; height: auto; }
   border-bottom: 1px solid #eee;
 }
 
-.pricing-table tr:nth-child(even) { 
-  background-color: #f9f9f9; 
+.pricing-table tr:nth-child(even) {
+  background-color: #f9f9f9;
 }
 
 .price-highlight {
@@ -459,7 +492,6 @@ img { max-width: 100%; height: auto; }
   color: var(--secondary-color);
 }
 
-/* Pricing Cards */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -472,13 +504,13 @@ img { max-width: 100%; height: auto; }
   border-radius: var(--radius-md);
   padding: 25px;
   box-shadow: var(--shadow-sm);
-  transition: transform 0.2s;
   position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.price-card:hover { 
-  transform: translateY(-3px); 
-  box-shadow: var(--shadow-md); 
+.price-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
 }
 
 .price-card.featured {
@@ -487,14 +519,13 @@ img { max-width: 100%; height: auto; }
 }
 
 .price-large {
+  display: block;
   font-size: 1.8rem;
   font-weight: bold;
   color: var(--primary-color);
   margin: 10px 0;
-  display: block;
 }
 
-/* Disclaimer & Legal */
 .disclaimer-box {
   background-color: #fff3cd;
   border-left: 5px solid #ffc107;
@@ -513,10 +544,8 @@ img { max-width: 100%; height: auto; }
 }
 
 /* ========================================== */
-/* 9. ABOUT PAGE SPECIFIC STYLES */
+/* 9. ABOUT PAGE                              */
 /* ========================================== */
-
-/* Mission Section */
 .mission-section {
   padding: 60px 20px;
   background-color: var(--bg-white);
@@ -549,7 +578,6 @@ img { max-width: 100%; height: auto; }
   color: var(--text-primary);
 }
 
-/* Story Section */
 .story-section {
   padding: 60px 20px;
   background-color: var(--bg-light);
@@ -559,7 +587,7 @@ img { max-width: 100%; height: auto; }
   display: flex;
   gap: 40px;
   align-items: center;
-  max-width: 1200px;
+  max-width: var(--container-width);
   margin: 0 auto;
 }
 
@@ -592,7 +620,6 @@ img { max-width: 100%; height: auto; }
   color: var(--text-primary);
 }
 
-/* Team Section */
 .team-section {
   padding: 60px 20px;
   background-color: var(--bg-white);
@@ -609,11 +636,10 @@ img { max-width: 100%; height: auto; }
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 30px;
-  max-width: 1200px;
+  max-width: var(--container-width);
   margin: 0 auto;
 }
 
-/* Member Cards - Match Service Card Style */
 .member-card {
   display: block;
   background-color: var(--bg-white);
@@ -622,7 +648,7 @@ img { max-width: 100%; height: auto; }
   padding: 30px;
   text-align: center;
   box-shadow: var(--shadow-sm);
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .member-card:hover {
@@ -631,7 +657,6 @@ img { max-width: 100%; height: auto; }
   border-color: var(--secondary-color);
 }
 
-/* Headshot - Circular with Border (matches logo style) */
 .headshot,
 .rounded-photo {
   width: 150px;
@@ -642,7 +667,7 @@ img { max-width: 100%; height: auto; }
   box-shadow: var(--shadow-md);
   margin: 0 auto 20px;
   display: block;
-  transition: all 0.3s ease;
+  transition: border-color 0.3s ease, transform 0.3s ease;
 }
 
 .member-card:hover .headshot {
@@ -658,11 +683,11 @@ img { max-width: 100%; height: auto; }
 }
 
 .member-card .title {
+  display: block;
   color: var(--secondary-color);
   font-weight: 600;
   font-size: 1rem;
   margin-bottom: 15px;
-  display: block;
 }
 
 .member-card p {
@@ -674,9 +699,8 @@ img { max-width: 100%; height: auto; }
 }
 
 /* ========================================== */
-/* 10. CONTACT PAGE SPECIFIC STYLES */
+/* 10. CONTACT PAGE                           */
 /* ========================================== */
-
 .contact-info-block {
   background-color: var(--bg-light);
   padding: 30px;
@@ -701,7 +725,7 @@ img { max-width: 100%; height: auto; }
   border: 1px solid #eee;
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
-  transition: all 0.3s ease;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .contact-detail:hover {
@@ -731,6 +755,7 @@ img { max-width: 100%; height: auto; }
   font-weight: 700;
   color: var(--primary-color);
   font-size: 1.3rem;
+  transition: color 0.3s ease;
 }
 
 .contact-link:hover {
@@ -752,13 +777,8 @@ img { max-width: 100%; height: auto; }
   align-items: center;
 }
 
-.hours-row:last-child {
-  border-bottom: none;
-}
-
-.hours-row:nth-child(even) {
-  background-color: #f9f9f9;
-}
+.hours-row:last-child  { border-bottom: none; }
+.hours-row:nth-child(even) { background-color: #f9f9f9; }
 
 .hours-day {
   flex: 1;
@@ -793,9 +813,7 @@ img { max-width: 100%; height: auto; }
   border-bottom: 1px solid rgba(0,0,0,0.1);
 }
 
-.premium-item:last-child {
-  border-bottom: none;
-}
+.premium-item:last-child { border-bottom: none; }
 
 .premium-title {
   font-weight: 700;
@@ -815,7 +833,6 @@ img { max-width: 100%; height: auto; }
   margin-top: 40px;
 }
 
-/* Payment List Styles */
 .payment-list {
   list-style: none;
   padding: 0;
@@ -823,16 +840,14 @@ img { max-width: 100%; height: auto; }
 }
 
 .payment-list li {
-  padding: 12px 0;
-  border-bottom: 1px solid #eee;
   display: flex;
   align-items: center;
   gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
 }
 
-.payment-list li:last-child {
-  border-bottom: none;
-}
+.payment-list li:last-child { border-bottom: none; }
 
 .payment-list li i {
   color: var(--secondary-color);
@@ -848,9 +863,8 @@ img { max-width: 100%; height: auto; }
 }
 
 /* ========================================== */
-/* 11. FAQ PAGE SPECIFIC STYLES */
+/* 11. FAQ PAGE                               */
 /* ========================================== */
-
 .faq-section {
   padding: 60px 20px;
   background-color: var(--bg-white);
@@ -867,8 +881,8 @@ img { max-width: 100%; height: auto; }
   border-radius: var(--radius-md);
   margin-bottom: 15px;
   overflow: hidden;
-  transition: all 0.3s ease;
   box-shadow: var(--shadow-sm);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .faq-item:hover {
@@ -884,42 +898,39 @@ img { max-width: 100%; height: auto; }
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  gap: 15px;
+  min-height: 60px;
   cursor: pointer;
   text-align: left;
   font-family: inherit;
   transition: background-color 0.3s ease;
-  gap: 15px;
-  min-height: 60px;
 }
 
-.accordion-button:hover {
-  background-color: var(--bg-light);
-}
-
+.accordion-button:hover,
 .accordion-button[aria-expanded="true"] {
   background-color: var(--bg-light);
 }
 
 .faq-question {
+  flex: 1;
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--primary-color);
-  flex: 1;
   padding-right: 15px;
+  line-height: 1.5;
   word-wrap: break-word;
   overflow-wrap: break-word;
   word-break: break-word;
   hyphens: auto;
-  line-height: 1.5;
   max-width: 100%;
 }
 
 .accordion-button i {
+  flex-shrink: 0;
   font-size: 1.2rem;
   color: var(--secondary-color);
-  transition: transform 0.3s ease;
-  flex-shrink: 0;
   margin-top: 2px;
+  transition: transform 0.3s ease;
 }
 
 .accordion-content {
@@ -930,13 +941,13 @@ img { max-width: 100%; height: auto; }
 }
 
 .accordion-content p {
-  color: var(--text-primary);
-  line-height: 1.8;
-  font-size: 1rem;
   padding: 0 20px;
+  margin-bottom: 20px;
+  color: var(--text-primary);
+  font-size: 1rem;
+  line-height: 1.8;
   word-wrap: break-word;
   overflow-wrap: break-word;
-  margin-bottom: 20px;
 }
 
 .accordion-content a {
@@ -944,9 +955,8 @@ img { max-width: 100%; height: auto; }
 }
 
 /* ========================================== */
-/* 12. CONTACT CTA SECTION (ALL PAGES) */
+/* 12. CONTACT CTA SECTION (ALL PAGES)        */
 /* ========================================== */
-
 .contact-cta-section {
   background: linear-gradient(135deg, var(--secondary-color) 0%, var(--secondary-dark) 100%);
   padding: 60px 20px;
@@ -969,15 +979,66 @@ img { max-width: 100%; height: auto; }
 }
 
 /* ========================================== */
-/* 13. FOOTER */
+/* 13. FOOTER (.site-footer)                  */
+/* Note: generic `footer` rule removed —      */
+/* .site-footer fully supersedes it.          */
 /* ========================================== */
-footer {
+.site-footer {
   background-color: var(--primary-dark);
-  color: white;
-  padding: 60px 0 20px;
+  color: rgba(255,255,255,0.9);
+  padding: 40px 20px 30px;
   text-align: center;
+  font-size: 0.9rem;
+  line-height: 1.6;
 }
 
+.site-footer .container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.site-footer p {
+  margin-bottom: 20px;
+  color: rgba(255,255,255,0.85);
+}
+
+.site-footer p:last-child {
+  margin-bottom: 0;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.9);
+}
+
+/* Copyright line */
+.site-footer p:first-child {
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 25px;
+  color: white;
+}
+
+/* Legal disclosure paragraphs */
+.site-footer p:nth-child(2),
+.site-footer p:nth-child(3) {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.site-footer a {
+  color: var(--accent-color);
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.site-footer a:hover {
+  color: var(--secondary-color);
+}
+
+/* Footer variant helpers (other pages) */
 .footer-links {
   display: flex;
   justify-content: center;
@@ -999,10 +1060,10 @@ footer {
   background-color: rgba(255,255,255,0.1);
   border-radius: 50%;
   margin: 0 10px;
-  transition: all 0.3s ease;
   border: 2px solid transparent;
   color: white;
   font-size: 1.5rem;
+  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
 }
 
 .social-media a:hover {
@@ -1018,7 +1079,7 @@ footer {
 }
 
 /* ========================================== */
-/* 14. ANIMATIONS & TRANSITIONS */
+/* 14. ANIMATIONS                             */
 /* ========================================== */
 @keyframes fadeIn {
   from {
@@ -1036,7 +1097,7 @@ footer {
 }
 
 /* ========================================== */
-/* 15. ACCESSIBILITY */
+/* 15. ACCESSIBILITY                          */
 /* ========================================== */
 *:focus-visible {
   outline: 3px solid var(--secondary-color);
@@ -1050,19 +1111,22 @@ footer {
   padding: 0;
   margin: -1px;
   overflow: hidden;
-  clip: rect(0, 0, 0, 0);
+  clip: rect(0,0,0,0);
   white-space: nowrap;
   border-width: 0;
 }
 
 /* ========================================== */
-/* 16. MOBILE RESPONSIVENESS */
+/* 16. RESPONSIVE — ≤992px (tablet/mobile)   */
 /* ========================================== */
 @media (max-width: 992px) {
+  /* Show hamburger; push it to far right */
   .menu-toggle {
     display: block;
+    margin-left: auto;
   }
 
+  /* Slide nav off-screen (JS toggles .active) */
   .nav-menu {
     position: fixed;
     top: var(--header-height);
@@ -1074,12 +1138,8 @@ footer {
     align-items: center;
     justify-content: flex-start;
     padding-top: 40px;
-    transition: right 0.3s ease-in-out;
     box-shadow: -2px 0 5px rgba(0,0,0,0.1);
-  }
-
-  .nav-menu.active {
-    right: 0;
+    transition: right 0.3s ease-in-out;
   }
 
   .nav-links {
@@ -1099,43 +1159,32 @@ footer {
     font-size: 1.2rem;
   }
 
+  /* Quick contact stacks vertically inside open menu */
   .quick-contact {
+    margin-left: 0;
     margin-top: 20px;
     flex-direction: column;
   }
 
-  .services-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
+  /* Lang toggle stays in header row — no extra override needed */
 
-  .team-story-flex {
-    flex-direction: column;
-    gap: 30px;
-  }
+  .services-grid     { grid-template-columns: 1fr; gap: 20px; }
+  .team-story-flex   { flex-direction: column; gap: 30px; }
+  .story-image       { max-width: 100%; }
+  .team-members      { grid-template-columns: 1fr; }
+  .two-column-layout { grid-template-columns: 1fr; }
 
-  .story-image {
-    max-width: 100%;
-  }
-
-  .team-members {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-subpage h1 {
-    font-size: 2rem;
-  }
+  .hero-subpage h1 { font-size: 2rem; }
 
   .mission-section blockquote {
     font-size: 1.1rem;
     padding: 15px 20px;
   }
-
-  .two-column-layout {
-    grid-template-columns: 1fr;
-  }
 }
 
+/* ========================================== */
+/* 17. RESPONSIVE — ≤768px                   */
+/* ========================================== */
 @media (max-width: 768px) {
   .hours-row {
     flex-direction: column;
@@ -1143,270 +1192,107 @@ footer {
     gap: 5px;
   }
 
-  .hours-time {
-    text-align: left;
+  .hours-time { text-align: left; }
+
+  .contact-link { font-size: 1.1rem; }
+
+  .site-footer {
+    padding: 30px 15px 20px;
+    font-size: 0.85rem;
   }
 
-  .contact-link {
-    font-size: 1.1rem;
-  }
+  .site-footer p:first-child           { font-size: 0.9rem; }
+  .site-footer p:nth-child(2),
+  .site-footer p:nth-child(3)          { font-size: 0.75rem; }
+  .site-footer p:last-child            { font-size: 0.85rem; }
 }
 
+/* ========================================== */
+/* 18. RESPONSIVE — ≤600px                   */
+/* ========================================== */
 @media (max-width: 600px) {
-  .logo img {
-    height: 50px;
-    width: 50px;
-  }
+  .logo img { height: 50px; width: 50px; }
 
-  .quick-call span {
-    display: none;
-  }
-  
-  .quick-call {
-    padding: 10px;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-  }
+  /* Collapse call button to icon-only circle */
+  .quick-call span   { display: none; }
+  .quick-call        { padding: 10px; border-radius: 50%; width: 40px; height: 40px; }
 
-  .hero-title {
-    font-size: 1.8rem;
-  }
-
-  .hero-logo-container img {
-    max-width: 180px;
-  }
+  .hero-title              { font-size: 1.8rem; }
+  .hero-logo-container img { max-width: 180px; }
 
   .hero-subpage {
     padding: 60px 20px;
     min-height: 30vh;
   }
+  .hero-subpage h1 { font-size: 1.6rem; }
 
-  .hero-subpage h1 {
-    font-size: 1.6rem;
-  }
+  .pricing-table { font-size: 0.9rem; }
 
-  .pricing-table {
-    font-size: 0.9rem;
-  }
-
-  .service-card {
-    padding: 20px;
-  }
-
-  .service-card h3 {
-    font-size: 1.2rem;
-  }
+  .service-card   { padding: 20px; }
+  .service-card h3 { font-size: 1.2rem; }
 
   .mission-section h2,
   .story-text h2,
   .team-section h2,
-  .contact-cta-section h2 {
-    font-size: 1.5rem;
-  }
+  .contact-cta-section h2 { font-size: 1.5rem; }
 
   .headshot,
-  .rounded-photo {
-    width: 120px;
-    height: 120px;
-  }
+  .rounded-photo { width: 120px; height: 120px; }
 
-  .member-card {
-    padding: 20px;
-  }
+  .member-card { padding: 20px; }
 
-  .cta-buttons {
-    flex-direction: column;
-    gap: 15px;
-  }
+  .cta-buttons { flex-direction: column; gap: 15px; }
 
+  .button-cta { width: 100%; max-width: 100%; }
+
+  .faq-question       { font-size: 1rem; }
+  .accordion-button   { padding: 15px; }
+  .accordion-content p { font-size: 0.95rem; }
+}
+
+/* ========================================== */
+/* 19. RESPONSIVE — ≤480px                   */
+/* ========================================== */
+@media (max-width: 480px) {
   .button-cta {
-    width: 100%;
-  }
-
-  .faq-question {
-    font-size: 1rem;
-  }
-
-  .accordion-button {
-    padding: 15px;
-  }
-
-  .accordion-content p {
     font-size: 0.95rem;
+    padding: 12px 16px;
   }
+
+  .back-to-top-btn {
+    bottom: 16px;
+    right: 16px;
+    padding: 8px 14px;
+    font-size: 0.875rem;
+  }
+
+  .site-footer { text-align: left; }
 }
 
 /* ========================================== */
-/* END OF GLOBAL STYLESHEET */
+/* JS-DEPENDENT RULES (DO NOT REMOVE)         */
+/* These selectors are toggled by global.js   */
 /* ========================================== */
 
-
-
-/* Fix for overflowing button text */
-.button-cta {
-    /* Allow text to wrap onto multiple lines */
-    white-space: normal !important; 
-    
-    /* Ensure the button grows vertically to fit the text */
-    height: auto !important; 
-    min-height: 44px; /* Standard accessible touch target size */
-    
-    /* Prevent the button from being wider than the screen */
-    max-width: 90%; 
-    width: fit-content;
-    
-    /* Center the button and the text inside it */
-    display: inline-block;
-    text-align: center;
-    
-    /* spacing adjustments */
-    padding: 12px 24px;
-    line-height: 1.4; /* Improves readability when text wraps */
-    
-    /* Prevent text from touching the edges of the button */
-    box-sizing: border-box; 
+/* MobileMenuManager: toggles .active on .nav-menu */
+.nav-menu.active {
+  right: 0;
 }
 
-/* Optional: Slightly smaller font only on mobile to help it fit better */
-@media (max-width: 480px) {
-    .button-cta {
-        font-size: 0.95rem; 
-        padding: 12px 16px;
-    }
-}
+/* HeaderScrollManager: toggles .scrolled on .sticky-header */
+/* (already defined above in section 5 — kept here for clarity) */
 
-/* ========================================== */
-/* IMPROVED FOOTER STYLING */
-/* ========================================== */
+/* FAQAccordionManager: sets aria-expanded + inline maxHeight/padding via JS.
+   The transition on .accordion-content handles the animation. */
 
-.site-footer {
-  background-color: var(--primary-dark);
-  color: rgba(255, 255, 255, 0.9);
-  padding: 40px 20px 30px;
-  text-align: center;
-  font-size: 0.9rem;
-  line-height: 1.6;
-}
+/* AnimationManager: adds .fade-in via IntersectionObserver */
 
-.site-footer .container {
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.site-footer p {
-  margin-bottom: 20px;
-  color: rgba(255, 255, 255, 0.85);
-}
-
-.site-footer p:last-child {
-  margin-bottom: 0;
-}
-
-/* First paragraph (copyright) - slightly larger */
-.site-footer p:first-child {
-  font-size: 0.95rem;
-  font-weight: 500;
-  margin-bottom: 25px;
-  color: white;
-}
-
-/* Legal paragraphs - smaller, more subdued */
-.site-footer p:nth-child(2),
-.site-footer p:nth-child(3) {
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.7);
-  margin-bottom: 15px;
-  line-height: 1.5;
-}
-
-/* Contact paragraph - slightly emphasized */
-.site-footer p:last-child {
-  font-size: 0.9rem;
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  color: rgba(255, 255, 255, 0.9);
-}
-
-/* Footer links styling */
-.site-footer a {
-  color: var(--accent-color);
-  text-decoration: underline;
-  transition: color 0.3s ease;
-}
-
-.site-footer a:hover {
-  color: var(--secondary-color);
-}
-
-/* Mobile adjustments */
-@media (max-width: 768px) {
-  .site-footer {
-    padding: 30px 15px 20px;
-    font-size: 0.85rem;
-  }
-  
-  .site-footer p:first-child {
-    font-size: 0.9rem;
-  }
-  
-  .site-footer p:nth-child(2),
-  .site-footer p:nth-child(3) {
-    font-size: 0.75rem;
-  }
-  
-  .site-footer p:last-child {
-    font-size: 0.85rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .site-footer {
-    text-align: left;
-  }
-}
-
-/* ========================================== */
-/* ADDITIONS: Lang Toggle Always Visible      */
-/* + Back to Top Button                       */
-/* ========================================== */
-
-/* --- Lang Toggle: always visible in header, outside nav-menu --- */
-/* Position it between nav and quick-contact on desktop,
-   and between logo and hamburger on mobile */
-.lang-toggle-button {
-  order: 2; /* sits between nav (order default) and quick-contact */
-  flex-shrink: 0;
-}
-
-/* On mobile the nav-menu slides off-screen, but lang-toggle stays in header */
-@media (max-width: 992px) {
-  .header-content {
-    /* logo | lang-toggle | quick-contact | hamburger */
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  /* Push hamburger to the far right */
-  .menu-toggle {
-    margin-left: auto;
-  }
-
-  /* Give quick-contact a bit of spacing */
-  .quick-contact {
-    margin-left: 0;
-  }
-}
-
-/* --- Back to Top Button --- */
+/* Back to Top: BackToTopManager toggles .visible */
 .back-to-top-btn {
   position: fixed;
   bottom: 24px;
   right: 24px;
   z-index: 999;
-
   background-color: var(--secondary-color);
   color: white;
   border: none;
@@ -1417,8 +1303,7 @@ footer {
   font-family: inherit;
   cursor: pointer;
   box-shadow: var(--shadow-md);
-
-  /* Hidden by default */
+  /* Hidden until .visible is added by JS */
   opacity: 0;
   pointer-events: none;
   transform: translateY(10px);
@@ -1434,13 +1319,4 @@ footer {
 .back-to-top-btn:hover {
   background-color: var(--secondary-dark);
   transform: translateY(-2px);
-}
-
-@media (max-width: 480px) {
-  .back-to-top-btn {
-    bottom: 16px;
-    right: 16px;
-    padding: 8px 14px;
-    font-size: 0.875rem;
-  }
 }
