@@ -266,3 +266,30 @@
   });
 
 })();
+
+
+
+/* ========================================== */
+/* ADDITION: Back to Top Manager              */
+/* Append this block inside the IIFE in       */
+/* global.js, just before the DOMContentLoaded*/
+/* listener, then call BackToTopManager.init()*/
+/* inside that listener.                      */
+/* ========================================== */
+
+const BackToTopManager = {
+  init() {
+    const btn = document.getElementById('back-to-top');
+    if (!btn) return;
+
+    // Show/hide based on scroll position
+    window.addEventListener('scroll', () => {
+      btn.classList.toggle('visible', window.scrollY > 300);
+    });
+
+    // Smooth scroll to top on click
+    btn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+};
