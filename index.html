@@ -17,6 +17,9 @@
                 </a>
             </div>
             
+            <!-- Language toggle is now OUTSIDE .nav-menu so it stays visible on mobile -->
+            <button id="lang-toggle" class="lang-toggle-button" aria-label="Switch Language">EN</button>
+
             <nav id="main-navigation" class="nav-menu" role="navigation">
                 <ul class="nav-links">
                     <li><a href="index.html" class="active" data-i18n="nav.home">Inicio</a></li>
@@ -25,8 +28,6 @@
                     <li><a href="faq.html" data-i18n="nav.faq">FAQ</a></li>
                     <li><a href="contact.html" data-i18n="nav.contact">Contacto</a></li>
                 </ul>
-                
-                <button id="lang-toggle" class="lang-toggle-button" aria-label="Switch Language">EN</button>
             </nav>
 
             <div class="quick-contact">
@@ -156,6 +157,15 @@
 
         </div>
     </footer>
+
+    <!-- BACK TO TOP BUTTON -->
+    <button id="back-to-top" 
+            class="back-to-top-btn" 
+            aria-label="Back to top"
+            data-en="↑ Top" 
+            data-es="↑ Arriba">
+        ↑ Arriba
+    </button>
 
     <script src="js/global.js"></script>
 </body>
