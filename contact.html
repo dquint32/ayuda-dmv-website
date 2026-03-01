@@ -16,7 +16,10 @@
                     <img src="ayudaDMVLogo.jpg" alt="Ayuda DMV Logo">
                 </a>
             </div>
-            
+
+            <!-- Lang toggle OUTSIDE .nav-menu so it stays visible on mobile -->
+            <button id="lang-toggle" class="lang-toggle-button" aria-label="Switch Language">EN</button>
+
             <nav id="main-navigation" class="nav-menu" role="navigation">
                 <ul class="nav-links">
                     <li><a href="index.html" data-i18n="nav.home">Inicio</a></li>
@@ -25,14 +28,12 @@
                     <li><a href="faq.html" data-i18n="nav.faq">FAQ</a></li>
                     <li><a href="contact.html" class="active" data-i18n="nav.contact">Contacto</a></li>
                 </ul>
-                
-                <button id="lang-toggle" class="lang-toggle-button" aria-label="Switch Language">EN</button>
             </nav>
 
             <div class="quick-contact">
                 <a href="tel:3035004122" class="button-primary quick-call" aria-label="Call Now">
                     <i class="fas fa-phone" aria-hidden="true"></i>
-                    <span>Llamar</span>
+                    <span data-en="Call" data-es="Llamar">Llamar</span>
                 </a>
                 <a href="https://wa.me/13035004122" class="button-whatsapp quick-whatsapp" target="_blank" aria-label="WhatsApp">
                     <i class="fab fa-whatsapp"></i>
@@ -46,7 +47,7 @@
     </header>
 
     <main>
-        
+
         <section class="page-header">
             <div class="container">
                 <h1 data-en="Contact Ayuda DMV" data-es="Contáctanos">Contáctanos</h1>
@@ -56,11 +57,11 @@
 
         <section id="contact" class="mb-medium">
             <div class="container">
-                
+
                 <!-- Primary Contact Information -->
                 <div class="contact-info-block mt-medium">
                     <h3 data-en="Get In Touch" data-es="Ponte en Contacto">Ponte en Contacto</h3>
-                    
+
                     <div class="contact-detail">
                         <i class="fas fa-phone-alt"></i>
                         <div class="contact-detail-content">
@@ -86,15 +87,15 @@
                     </div>
                 </div>
 
-                <!-- Hours and Premium Fees -->
+                <!-- Hours and Payment -->
                 <div class="two-column-layout">
-                    
-                    <!-- Regular Hours -->
+
+                    <!-- Business Hours -->
                     <div class="contact-info-block">
                         <h3 data-en="Business Hours" data-es="Horario de Atención">
                             <i class="fas fa-clock"></i> Horario de Atención
                         </h3>
-                        
+
                         <div class="hours-table">
                             <div class="hours-row">
                                 <div class="hours-day" data-en="Monday – Friday" data-es="Lunes – Viernes">Lunes – Viernes</div>
@@ -106,7 +107,7 @@
                             <h4 data-en="Additional Service Fees" data-es="Tarifas de Servicio Adicionales">
                                 <i class="fas fa-info-circle"></i> Tarifas de Servicio Adicionales
                             </h4>
-                            
+
                             <div class="premium-item">
                                 <div class="premium-title" data-en="After-Hours Premium: $25" data-es="Prima Fuera de Horario: $25">
                                     Prima Fuera de Horario: $25
@@ -148,7 +149,7 @@
                             <ul style="list-style: none; padding: 0; margin-bottom: 20px;">
                                 <li style="padding: 4px 0;"><i class="fas fa-check" style="color: green;"></i> Cash / Efectivo</li>
                                 <li style="padding: 4px 0;"><i class="fas fa-check" style="color: green;"></i> Venmo / Zelle / PayPal</li>
-                                <li style="padding: 4px 0;"><i class="fas fa-check" style="color: green;"></i> Cards (+3% fee)</li>
+                                <li style="padding: 4px 0;"><i class="fas fa-check" style="color: green;"></i> <span data-en="Cards (+3% fee)" data-es="Tarjetas (+3% de tarifa)">Tarjetas (+3% de tarifa)</span></li>
                             </ul>
 
                             <p style="margin-bottom: 10px; font-weight: bold;" data-en="Printing Services:" data-es="Servicios de Impresión:">Servicios de Impresión:</p>
@@ -186,20 +187,20 @@
 
     </main>
 
-     <footer class="site-footer">
+    <footer class="site-footer">
         <div class="container">
 
             <!-- COPYRIGHT -->
             <p data-en="© 2026 Ayuda DMV. All Rights Reserved. A brand of <a href='https://serviciosquintana.com/' target='_blank'>Servicios Quintana LLC</a>"
                data-es="© 2026 Ayuda DMV. Todos los derechos reservados. Una marca de <a href='https://serviciosquintana.com/' target='_blank'>Servicios Quintana LLC</a>">
-                © 2026 Ayuda DMV. Todos los derechos reservados. Una marca de 
+                © 2026 Ayuda DMV. Todos los derechos reservados. Una marca de
                 <a href="https://serviciosquintana.com/" target="_blank">Servicios Quintana LLC</a>
             </p>
 
             <!-- AI DISCLOSURE -->
             <p style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.2);">
                 <strong data-en="AI Disclosure & Privacy:" data-es="Divulgación de IA y Privacidad:">Divulgación de IA y Privacidad:</strong><br>
-                <span data-en="We may use Artificial Intelligence (AI) as a clerical tool to help organize, translate, or draft documents. However: (1) Every document is personally reviewed and edited by David Quintana to ensure 100% accuracy before delivery. (2) We never input your personal identifying information (Social Security numbers, full names, or addresses) into any public AI system. (3) AI does not make legal or administrative decisions—you are always working with a real person." 
+                <span data-en="We may use Artificial Intelligence (AI) as a clerical tool to help organize, translate, or draft documents. However: (1) Every document is personally reviewed and edited by David Quintana to ensure 100% accuracy before delivery. (2) We never input your personal identifying information (Social Security numbers, full names, or addresses) into any public AI system. (3) AI does not make legal or administrative decisions—you are always working with a real person."
                       data-es="Podemos utilizar Inteligencia Artificial (IA) como herramienta administrativa para ayudar a organizar, traducir o redactar documentos. Sin embargo: (1) Cada documento es revisado y editado personalmente por David Quintana para garantizar el 100% de precisión antes de la entrega. (2) Nunca ingresamos su información de identificación personal (números de Seguro Social, nombres completos o direcciones) en ningún sistema de IA público. (3) La IA no toma decisiones legales o administrativas—usted siempre está trabajando con una persona real.">
                     Podemos utilizar Inteligencia Artificial (IA) como herramienta administrativa para ayudar a organizar, traducir o redactar documentos. Sin embargo: (1) Cada documento es revisado y editado personalmente por David Quintana para garantizar el 100% de precisión antes de la entrega. (2) Nunca ingresamos su información de identificación personal (números de Seguro Social, nombres completos o direcciones) en ningún sistema de IA público. (3) La IA no toma decisiones legales o administrativas—usted siempre está trabajando con una persona real.
                 </span>
@@ -226,7 +227,15 @@
         </div>
     </footer>
 
+    <!-- BACK TO TOP BUTTON -->
+    <button id="back-to-top"
+            class="back-to-top-btn"
+            aria-label="Back to top"
+            data-en="↑ Top"
+            data-es="↑ Arriba">
+        ↑ Arriba
+    </button>
+
     <script src="js/global.js"></script>
 </body>
 </html>
-
