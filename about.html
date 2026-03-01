@@ -17,6 +17,9 @@
                 </a>
             </div>
 
+            <!-- Lang toggle OUTSIDE .nav-menu so it stays visible on mobile -->
+            <button id="lang-toggle" class="lang-toggle-button" aria-label="Switch Language">EN</button>
+
             <nav id="main-navigation" class="nav-menu" role="navigation">
                 <ul class="nav-links">
                     <li><a href="index.html" data-i18n="nav.home">Inicio</a></li>
@@ -25,8 +28,6 @@
                     <li><a href="faq.html" data-i18n="nav.faq">FAQ</a></li>
                     <li><a href="contact.html" data-i18n="nav.contact">Contacto</a></li>
                 </ul>
-                
-                <button id="lang-toggle" class="lang-toggle-button" aria-label="Switch Language">EN</button>
             </nav>
 
             <div class="quick-contact">
@@ -46,6 +47,7 @@
     </header>
 
     <main>
+
         <!-- Hero Section -->
         <section class="hero-subpage">
             <div class="container">
@@ -77,7 +79,9 @@
             <div class="container">
                 <div class="team-story-flex">
                     <div class="story-image">
-                        <img src="team-story-photo.png" alt="Foto del fundador David" class="rounded-photo">
+                        <img src="professional_profile.jpg"
+                             alt="Foto del fundador David"
+                             class="rounded-photo story-portrait">
                     </div>
                     <div class="story-text">
                         <h2 data-en="Why I Started Ayuda DMV" data-es="Por Qué Empecé Ayuda DMV">
@@ -99,10 +103,11 @@
                     Conoce al Fundador
                 </h2>
                 <div class="team-members">
-                    
-                    <!-- David -->
+
                     <div class="member-card">
-                        <img src="david-headshot.png" alt="Foto de David" class="headshot">
+                        <img src="professional_profile.jpg"
+                             alt="Foto de David"
+                             class="headshot headshot-portrait">
                         <h3 data-en="David Quintana" data-es="David Quintana">David Quintana</h3>
                         <span class="title" data-en="Founder & DMV Compliance Specialist" data-es="Fundador y Especialista en Cumplimiento del DMV">
                             Fundador y Especialista en Cumplimiento del DMV
@@ -121,7 +126,7 @@
         <section class="contact-cta-section">
             <div class="container">
                 <h2 data-en="Ready to Get Started?" data-es="¿Listo para Comenzar?">¿Listo para Comenzar?</h2>
-                <p data-en="Contact us today for expert DMV assistance in Spanish and English." 
+                <p data-en="Contact us today for expert DMV assistance in Spanish and English."
                    data-es="Contáctanos hoy para recibir asistencia experta del DMV en español e inglés.">
                     Contáctanos hoy para recibir asistencia experta del DMV en español e inglés.
                 </p>
@@ -146,14 +151,14 @@
             <!-- COPYRIGHT -->
             <p data-en="© 2026 Ayuda DMV. All Rights Reserved. A brand of <a href='https://serviciosquintana.com/' target='_blank'>Servicios Quintana LLC</a>"
                data-es="© 2026 Ayuda DMV. Todos los derechos reservados. Una marca de <a href='https://serviciosquintana.com/' target='_blank'>Servicios Quintana LLC</a>">
-                © 2026 Ayuda DMV. Todos los derechos reservados. Una marca de 
+                © 2026 Ayuda DMV. Todos los derechos reservados. Una marca de
                 <a href="https://serviciosquintana.com/" target="_blank">Servicios Quintana LLC</a>
             </p>
 
             <!-- AI DISCLOSURE -->
             <p style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.2);">
                 <strong data-en="AI Disclosure & Privacy:" data-es="Divulgación de IA y Privacidad:">Divulgación de IA y Privacidad:</strong><br>
-                <span data-en="We may use artificial intelligence tools to assist with organizing, translating, or drafting documents. However: (1) All documents are personally reviewed and verified by David Quintana to ensure complete accuracy before delivery. (2) Your personal identifying information—such as Social Security numbers, full names, or addresses—is never entered into any public AI system. (3) AI does not make legal or administrative decisions. You are always working with a real person who takes full responsibility for the quality and accuracy of your service." 
+                <span data-en="We may use artificial intelligence tools to assist with organizing, translating, or drafting documents. However: (1) All documents are personally reviewed and verified by David Quintana to ensure complete accuracy before delivery. (2) Your personal identifying information—such as Social Security numbers, full names, or addresses—is never entered into any public AI system. (3) AI does not make legal or administrative decisions. You are always working with a real person who takes full responsibility for the quality and accuracy of your service."
                       data-es="Podemos utilizar herramientas de inteligencia artificial para ayudar con la organización, traducción o redacción de documentos. Sin embargo: (1) Todos los documentos son revisados y verificados personalmente por David Quintana para garantizar la precisión completa antes de la entrega. (2) Tu información de identificación personal—como números de Seguro Social, nombres completos o direcciones—nunca se ingresa en ningún sistema público de IA. (3) La IA no toma decisiones legales o administrativas. Siempre estás trabajando con una persona real que asume la responsabilidad total por la calidad y precisión de tu servicio.">
                     Podemos utilizar herramientas de inteligencia artificial para ayudar con la organización, traducción o redacción de documentos. Sin embargo: (1) Todos los documentos son revisados y verificados personalmente por David Quintana para garantizar la precisión completa antes de la entrega. (2) Tu información de identificación personal—como números de Seguro Social, nombres completos o direcciones—nunca se ingresa en ningún sistema público de IA. (3) La IA no toma decisiones legales o administrativas. Siempre estás trabajando con una persona real que asume la responsabilidad total por la calidad y precisión de tu servicio.
                 </span>
@@ -179,6 +184,15 @@
 
         </div>
     </footer>
+
+    <!-- BACK TO TOP BUTTON -->
+    <button id="back-to-top"
+            class="back-to-top-btn"
+            aria-label="Back to top"
+            data-en="↑ Top"
+            data-es="↑ Arriba">
+        ↑ Arriba
+    </button>
 
     <script src="js/global.js"></script>
 </body>
