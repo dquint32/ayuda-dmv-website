@@ -1320,3 +1320,55 @@ img { max-width: 100%; height: auto; }
   background-color: var(--secondary-dark);
   transform: translateY(-2px);
 }
+
+/* ============================================================
+   ABOUT PAGE — professional_profile.jpg portrait overrides
+   Append these rules to the bottom of global.css
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   Story Section — side-by-side layout
+   The portrait is tall (~3:4), so we constrain the container
+   width and let the image fill it top-aligned, cropping the
+   bottom just slightly so the face is always fully visible.
+   ---------------------------------------------------------- */
+
+.story-image {
+    /* Limit the column width so the tall photo doesn't dominate */
+    flex: 0 0 280px;
+    max-width: 280px;
+}
+
+.story-portrait {
+    width: 100%;
+    aspect-ratio: 3 / 4;       /* locks the frame to portrait */
+    object-fit: cover;
+    object-position: center 10%; /* keep head/face centred, not cropped */
+    border-radius: var(--radius-lg, 12px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    display: block;
+}
+
+/* ----------------------------------------------------------
+   Team / Member Card — headshot circle
+   The existing .headshot is likely a circle. The portrait is
+   taller than wide, so we pull the framing up so the face sits
+   centred rather than showing the chest.
+   ---------------------------------------------------------- */
+
+.headshot-portrait {
+    object-fit: cover;
+    object-position: center 8%; /* shift framing up toward the face */
+}
+
+/* ----------------------------------------------------------
+   Responsive — stack story section on mobile
+   ---------------------------------------------------------- */
+
+@media (max-width: 768px) {
+    .story-image {
+        flex: 0 0 100%;
+        max-width: 260px;       /* don't let it go full width on mobile */
+        margin: 0 auto 24px;    /* centre it above the text */
+    }
+}
