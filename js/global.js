@@ -58,6 +58,32 @@
   };
 
   /* ---------------------------------------------------------------
+     1b. LIGHT / DARK THEME (initial theme is set by the inline script in <head>)
+     --------------------------------------------------------------- */
+  const Theme = {
+    init() {
+      const btn = document.getElementById('theme-toggle');
+      if (!btn) return;
+      this.sync(btn);
+      btn.addEventListener('click', () => {
+        const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        store.set('ayudadmv_theme', next);
+        this.sync(btn);
+      });
+      document.addEventListener('languagechange', () => this.sync(btn));
+    },
+    sync(btn) {
+      const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const es = Language.current === 'es';
+      btn.setAttribute('aria-pressed', String(dark));
+      btn.setAttribute('aria-label', dark ? (es ? 'Cambiar a modo claro' : 'Switch to light mode')
+                                          : (es ? 'Cambiar a modo oscuro' : 'Switch to dark mode'));
+      btn.title = btn.getAttribute('aria-label');
+    }
+  };
+
+  /* ---------------------------------------------------------------
      2. MOBILE MENU
      --------------------------------------------------------------- */
   const MobileMenu = {
@@ -149,6 +175,7 @@
 
   document.addEventListener('DOMContentLoaded', () => {
     Language.init();
+    Theme.init();
     MobileMenu.init();
     Scroll.init();
     FAQ.init();
