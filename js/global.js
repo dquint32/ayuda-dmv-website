@@ -44,7 +44,7 @@
         text = text
           .replace(/\\n\\n|\n\n/g, '<br><br>')
           .replace('{email}', '<a href="mailto:' + EMAIL + '">' + EMAIL + '</a>')
-          .replace('{phone}', '<a href="tel:3035004122">' + PHONE_DISPLAY + '</a>');
+          .replace('{phone}', '<a href="tel:+13035004122">' + PHONE_DISPLAY + '</a>');
 
         if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
           el.placeholder = text;

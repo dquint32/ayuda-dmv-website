@@ -817,7 +817,7 @@ strong { font-weight: 700; }
   .profile__photo { width: 150px; height: 150px; }
   .profile .prose p { margin-left: 0; }
 
-  .footer-top { grid-template-columns: 1.4fr 1fr 1fr; }
+  .footer-top { grid-template-columns: 1.4fr 1fr 1fr 1fr; }
 }
 
 /* ================================================================
