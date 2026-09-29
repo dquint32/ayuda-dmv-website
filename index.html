@@ -29,6 +29,15 @@
     <meta name="twitter:description" content="Bilingual (Spanish/English) administrative help with Colorado DMV paperwork, proxy submissions, bonded title document prep, notary services, and certified translations. By appointment.">
     <meta name="twitter:image" content="https://ayudadmv.com/ayudaDMVLogo.jpg">
 
+    <script>
+        (function () {
+            try {
+                var t = localStorage.getItem('ayudadmv_theme');
+                if (t !== 'dark' && t !== 'light') t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { document.documentElement.setAttribute('data-theme', 'light'); }
+        })();
+    </script>
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script type="application/ld+json">
@@ -86,6 +95,10 @@
                 </ul>
             </nav>
 
+            <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Modo oscuro / Dark mode" aria-pressed="false">
+                <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+                <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></g></svg>
+            </button>
             <button id="lang-toggle" class="lang-toggle-button" type="button" aria-label="Switch to English">EN</button>
             <a href="tel:+13035004122" class="icon-btn icon-btn--call" aria-label="Call (303) 500-4122">
                 <i class="fas fa-phone" aria-hidden="true"></i><span class="icon-btn__label" data-en="Call" data-es="Llamar">Llamar</span>
