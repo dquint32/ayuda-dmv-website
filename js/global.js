@@ -1,293 +1,157 @@
-/* ========================================== */
-/* AYUDA DMV - GLOBAL JAVASCRIPT              */
-/* Version: 7.0 - Refactored & Integrated     */
-/* ========================================== */
-
+/* ================================================================
+   AYUDA DMV — GLOBAL JAVASCRIPT
+   Version 9.0 · Shared by every page
+   ================================================================ */
 (function () {
   'use strict';
 
-  /* ---------------------------------------- */
-  /* 1. LANGUAGE MANAGER                       */
-  /* ---------------------------------------- */
-  const LanguageManager = {
-    currentLang: 'es',
+  const STORAGE_KEY = 'ayudadmv_lang';
+  const EMAIL = 'placasfirmas.david@gmail.com';
+  const PHONE_DISPLAY = '(303) 500-4122';
 
-    translations: {
-      es: {
-        'nav.home':     'Inicio',
-        'nav.services': 'Servicios',
-        'nav.about':    'Sobre Mí',
-        'nav.faq':      'FAQ',
-        'nav.contact':  'Contacto',
-        'meta.title':   'Ayuda DMV Denver | Trámites, Notaría y Traducción en Español',
-        'meta.services_title': 'Servicios y Precios | Ayuda DMV — Documentos, Notaría, Pasaportes',
-        'meta.about_title': 'Sobre Mí | Ayuda DMV — David Quintana, Especialista en Cumplimiento del DMV',
-        'meta.faq_title': 'Preguntas Frecuentes | Ayuda DMV Denver',
-        'meta.contact': 'Contacto | Ayuda DMV — (303) 500-4122',
-        'footer.privacy': 'Política de Privacidad',
-        'footer.terms':   'Términos de Servicio'
-      },
-      en: {
-        'nav.home':     'Home',
-        'nav.services': 'Services',
-        'nav.about':    'About Me',
-        'nav.faq':      'FAQ',
-        'nav.contact':  'Contact',
-        'meta.title':   'Ayuda DMV Denver | DMV Paperwork, Notary & Translation in Spanish',
-        'meta.services_title': 'Services & Pricing | Ayuda DMV — Document Prep, Notary, Passports',
-        'meta.about_title': 'About Me | Ayuda DMV — David Quintana, DMV Compliance Specialist',
-        'meta.faq_title': 'FAQ | Ayuda DMV Denver',
-        'meta.contact': 'Contact | Ayuda DMV — (303) 500-4122',
-        'footer.privacy': 'Privacy Policy',
-        'footer.terms':   'Terms of Service'
-      }
-    },
+  // localStorage can throw in private windows; never let that break the page.
+  const store = {
+    get(key) { try { return window.localStorage.getItem(key); } catch (e) { return null; } },
+    set(key, value) { try { window.localStorage.setItem(key, value); } catch (e) { /* ignore */ } }
+  };
+
+  /* ---------------------------------------------------------------
+     1. LANGUAGE (Spanish default; any element with data-en + data-es)
+     --------------------------------------------------------------- */
+  const Language = {
+    current: 'es',
 
     init() {
-      const savedLang = localStorage.getItem('ayudadmv_lang') || 'es';
-      this.switchLanguage(savedLang);
-
-      const toggleBtn = document.getElementById('lang-toggle');
-      if (toggleBtn) {
-        toggleBtn.addEventListener('click', () => {
-          this.switchLanguage(this.currentLang === 'es' ? 'en' : 'es');
-        });
-      }
+      this.apply(store.get(STORAGE_KEY) === 'en' ? 'en' : 'es');
+      const btn = document.getElementById('lang-toggle');
+      if (btn) btn.addEventListener('click', () => this.apply(this.current === 'es' ? 'en' : 'es'));
     },
 
-    switchLanguage(lang) {
-      this.currentLang = lang;
-      localStorage.setItem('ayudadmv_lang', lang);
+    apply(lang) {
+      this.current = lang;
+      store.set(STORAGE_KEY, lang);
       document.documentElement.lang = lang;
 
       const btn = document.getElementById('lang-toggle');
-      if (btn) btn.textContent = lang === 'es' ? 'EN' : 'ES';
+      if (btn) {
+        btn.textContent = lang === 'es' ? 'EN' : 'ES';
+        btn.setAttribute('aria-label', lang === 'es' ? 'Switch to English' : 'Cambiar a español');
+      }
 
-      // Translate all data-en / data-es elements
       document.querySelectorAll('[data-en][data-es]').forEach(el => {
-        let text = el.getAttribute(`data-${lang}`);
-        if (!text) return;
-
-        // Convert \n\n to <br><br>
-        text = text.replace(/\n\n/g, '<br><br>');
-
-        // Inject linked placeholders
+        let text = el.getAttribute('data-' + lang);
+        if (text === null) return;
         text = text
-          .replace('{email}', '<a href="mailto:placasfirmas.david@gmail.com" style="color:white;text-decoration:underline;">placasfirmas.david@gmail.com</a>')
-          .replace('{phone}', '<a href="tel:3035004122" style="color:white;text-decoration:underline;">(303) 500-4122</a>');
+          .replace(/\\n\\n|\n\n/g, '<br><br>')
+          .replace('{email}', '<a href="mailto:' + EMAIL + '">' + EMAIL + '</a>')
+          .replace('{phone}', '<a href="tel:3035004122">' + PHONE_DISPLAY + '</a>');
 
-        // Preserve any existing <i> icon
-        const icon = el.querySelector('i');
-        if (icon) {
-          el.innerHTML = `${icon.outerHTML} ${text}`;
-        } else if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
           el.placeholder = text;
-        } else if (el.tagName === 'OPTION') {
-          el.textContent = text;
         } else {
           el.innerHTML = text;
         }
       });
 
-      // Translate data-i18n elements via dictionary
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        const value = this.translations[lang]?.[key];
-        if (value) el.textContent = value;
-      });
-
-      // Update <title> if it carries data-i18n
-      const titleEl = document.querySelector('title[data-i18n]');
-      if (titleEl) {
-        const value = this.translations[lang]?.[titleEl.getAttribute('data-i18n')];
-        if (value) document.title = value;
-      }
-
-      // Recalculate open accordion heights after text reflow
-      document.querySelectorAll('.accordion-button[aria-expanded="true"]').forEach(btn => {
-        const content = btn.nextElementSibling;
-        if (content) content.style.maxHeight = content.scrollHeight + 'px';
-      });
+      document.dispatchEvent(new CustomEvent('languagechange', { detail: { lang } }));
     }
   };
 
-  /* ---------------------------------------- */
-  /* 2. MOBILE MENU MANAGER                    */
-  /* ---------------------------------------- */
-  const MobileMenuManager = {
+  /* ---------------------------------------------------------------
+     2. MOBILE MENU
+     --------------------------------------------------------------- */
+  const MobileMenu = {
     init() {
-      const menuToggle = document.querySelector('.menu-toggle');
-      const navMenu    = document.querySelector('.nav-menu');
-      if (!menuToggle || !navMenu) return;
+      const toggle = document.querySelector('.menu-toggle');
+      const menu = document.querySelector('.nav-menu');
+      if (!toggle || !menu) return;
 
-      const close = () => {
-        menuToggle.classList.remove('active');
-        menuToggle.setAttribute('aria-expanded', 'false');
-        navMenu.classList.remove('active');
-        document.body.style.overflow = '';
+      const setOpen = open => {
+        toggle.setAttribute('aria-expanded', String(open));
+        menu.classList.toggle('active', open);
+        document.body.style.overflow = open ? 'hidden' : '';
+        const icon = toggle.querySelector('i');
+        if (icon) icon.className = open ? 'fas fa-times' : 'fas fa-bars';
       };
 
-      menuToggle.addEventListener('click', () => {
-        const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
-        if (isOpen) {
-          close();
-        } else {
-          menuToggle.classList.add('active');
-          menuToggle.setAttribute('aria-expanded', 'true');
-          navMenu.classList.add('active');
-          document.body.style.overflow = 'hidden';
+      toggle.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
+      menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') setOpen(false); });
+      window.matchMedia('(min-width: 992px)').addEventListener('change', e => { if (e.matches) setOpen(false); });
+    }
+  };
+
+  /* ---------------------------------------------------------------
+     3. HEADER SHADOW + BACK-TO-TOP
+     --------------------------------------------------------------- */
+  const Scroll = {
+    init() {
+      const header = document.querySelector('.site-header');
+      const topBtn = document.getElementById('back-to-top');
+      const onScroll = () => {
+        if (header) header.classList.toggle('scrolled', window.scrollY > 20);
+        if (topBtn) topBtn.classList.toggle('visible', window.scrollY > 400);
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+      if (topBtn) topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    }
+  };
+
+  /* ---------------------------------------------------------------
+     4. FAQ "EXPAND ALL" (items are native <details>, so they work without JS)
+     --------------------------------------------------------------- */
+  const FAQ = {
+    init() {
+      const btn = document.getElementById('toggle-all-faq');
+      const items = document.querySelectorAll('.faq-item');
+      if (!btn || !items.length) return;
+      const label = btn.querySelector('span');
+
+      const refresh = () => {
+        const allOpen = Array.from(items).every(d => d.open);
+        btn.setAttribute('aria-expanded', String(allOpen));
+        if (label) {
+          label.setAttribute('data-es', allOpen ? 'Contraer todo' : 'Expandir todo');
+          label.setAttribute('data-en', allOpen ? 'Collapse all' : 'Expand all');
+          label.textContent = label.getAttribute('data-' + Language.current);
         }
-      });
-
-      // Close when a nav link is clicked
-      navMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', close);
-      });
-
-      // Close on outside click
-      document.addEventListener('click', e => {
-        if (
-          navMenu.classList.contains('active') &&
-          !navMenu.contains(e.target) &&
-          !menuToggle.contains(e.target)
-        ) {
-          close();
-        }
-      });
-    }
-  };
-
-  /* ---------------------------------------- */
-  /* 3. STICKY HEADER MANAGER                  */
-  /* ---------------------------------------- */
-  const HeaderScrollManager = {
-    init() {
-      const header = document.querySelector('.sticky-header');
-      if (!header) return;
-      window.addEventListener('scroll', () => {
-        header.classList.toggle('scrolled', window.scrollY > 50);
-      }, { passive: true });
-    }
-  };
-
-  /* ---------------------------------------- */
-  /* 4. FAQ ACCORDION MANAGER                  */
-  /* ---------------------------------------- */
-  const FAQAccordionManager = {
-    init() {
-      document.querySelectorAll('.accordion-button').forEach(button => {
-        button.addEventListener('click', () => {
-          const isExpanded = button.getAttribute('aria-expanded') === 'true';
-          const content    = button.nextElementSibling;
-          const icon       = button.querySelector('i');
-
-          button.setAttribute('aria-expanded', String(!isExpanded));
-
-          if (!isExpanded) {
-            content.style.maxHeight = (content.scrollHeight + 50) + 'px';
-            content.style.padding   = '20px';
-            if (icon) icon.style.transform = 'rotate(180deg)';
-          } else {
-            content.style.maxHeight = '0';
-            content.style.padding   = '0';
-            if (icon) icon.style.transform = 'rotate(0deg)';
-          }
-        });
-      });
-    }
-  };
-
-  /* ---------------------------------------- */
-  /* 5. SMOOTH SCROLL MANAGER                  */
-  /* ---------------------------------------- */
-  const SmoothScrollManager = {
-    init() {
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          const href   = this.getAttribute('href');
-          if (!href || href === '#') return;
-          const target = document.querySelector(href);
-          if (!target) return;
-
-          e.preventDefault();
-          const offset = target.getBoundingClientRect().top + window.pageYOffset - 80;
-          window.scrollTo({ top: offset, behavior: 'smooth' });
-        });
-      });
-    }
-  };
-
-  /* ---------------------------------------- */
-  /* 6. FORM VALIDATION MANAGER                */
-  /* ---------------------------------------- */
-  const FormValidationManager = {
-    init() {
-      document.querySelectorAll('form[id]').forEach(form => {
-        form.addEventListener('submit', e => {
-          const honeypot = form.querySelector('input[name="website"]');
-          if (honeypot && honeypot.value !== '') {
-            e.preventDefault();
-          }
-        });
-      });
-    }
-  };
-
-  /* ---------------------------------------- */
-  /* 7. ANIMATION MANAGER                      */
-  /* ---------------------------------------- */
-  const AnimationManager = {
-    init() {
-      const observer = new IntersectionObserver(
-        entries => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('fade-in');
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
-      );
-
-      document
-        .querySelectorAll('.service-card, .member-card, .price-card, .faq-item')
-        .forEach(el => observer.observe(el));
-    }
-  };
-
-  /* ---------------------------------------- */
-  /* 8. BACK TO TOP MANAGER                    */
-  /* ---------------------------------------- */
-  const BackToTopManager = {
-    init() {
-      const btn = document.getElementById('back-to-top');
-      if (!btn) return;
-
-      window.addEventListener('scroll', () => {
-        btn.classList.toggle('visible', window.scrollY > 300);
-      }, { passive: true });
+      };
 
       btn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        const open = btn.getAttribute('aria-expanded') !== 'true';
+        items.forEach(d => { d.open = open; });
+        refresh();
       });
+      items.forEach(d => d.addEventListener('toggle', refresh));
+      document.addEventListener('languagechange', refresh);
     }
   };
 
-  /* ---------------------------------------- */
-  /* 9. INIT                                   */
-  /* ---------------------------------------- */
+  /* ---------------------------------------------------------------
+     5. REVEAL CARDS ON SCROLL
+     --------------------------------------------------------------- */
+  const Reveal = {
+    init() {
+      if (!('IntersectionObserver' in window)) return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.tile, .pkg, .profile').forEach(el => observer.observe(el));
+    }
+  };
+
   document.addEventListener('DOMContentLoaded', () => {
-    LanguageManager.init();
-    MobileMenuManager.init();
-    HeaderScrollManager.init();
-    FAQAccordionManager.init();
-    SmoothScrollManager.init();
-    FormValidationManager.init();
-    BackToTopManager.init();
-
-    // Slight delay so IntersectionObserver fires after layout is painted
-    setTimeout(() => AnimationManager.init(), 100);
+    Language.init();
+    MobileMenu.init();
+    Scroll.init();
+    FAQ.init();
+    Reveal.init();
   });
-
 })();
