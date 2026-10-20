@@ -179,6 +179,5 @@
     MobileMenu.init();
     Scroll.init();
     FAQ.init();
-    Reveal.init();
   });
 })();
