@@ -949,7 +949,7 @@ strong { font-weight: 700; }
   width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
-  object-position: 50% 18%;
+  object-position: 50% 30%;
   border-radius: 999px 999px 26px 26px;
   box-shadow: var(--shadow-lg);
 }
@@ -1317,7 +1317,10 @@ strong { font-weight: 700; }
   border-radius: 6px var(--radius-lg) var(--radius-lg) var(--radius-lg);
   box-shadow: none;
 }
-.profile__photo { width: 140px; height: 176px; border: 0; border-radius: 999px 999px 18px 18px; object-position: 50% 20%; box-shadow: 0 0 0 6px var(--surface), var(--shadow); }
+.profile__photo { width: 140px; height: 176px; border: 0; border-radius: 999px 999px 18px 18px; object-position: 50% 32%; box-shadow: 0 0 0 6px var(--surface), var(--shadow); }
+/* Founder card without a photo (the one real photo lives in the story section) */
+.profile--text { justify-items: start; text-align: left; border-left: 4px solid var(--naranja); }
+.profile--text .prose p { margin-left: 0; }
 .profile__role { text-transform: none; letter-spacing: 0; font-size: .95rem; font-weight: 700; }
 
 /* 15g. FAQ */
@@ -1338,6 +1341,7 @@ strong { font-weight: 700; }
   .story { grid-template-columns: 240px 1fr; }
   .story__figure { width: 100%; }
   .profile { grid-template-columns: 160px 1fr; padding: 30px; }
+  .profile--text { grid-template-columns: 1fr; }
   .profile__photo { width: 160px; height: 200px; }
 }
 
