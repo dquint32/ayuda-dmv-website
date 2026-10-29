@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="Ayuda DMV">
+<defs><clipPath id="a"><circle cx="120" cy="120" r="99"/></clipPath></defs>
+<circle cx="120" cy="120" r="104" fill="#FFFFFF" stroke="#10335A" stroke-width="9"/>
+<g clip-path="url(#a)">
+<polygon fill="#10335A" points="16,150 50,124 64,134 88,104 120,130 152,102 172,124 188,112 224,150"/>
+<polygon fill="#FFFFFF" points="152,102 143,111 148,110 152,114 157,110 161,112"/>
+<polygon fill="#FFFFFF" points="50,124 43,129.5 47,129 50,132 54,129 57,129.5"/>
+<polygon fill="#10335A" points="88,240 152,240 123,150 117,150"/>
+<rect x="119.2" y="156" width="1.6" height="5" fill="#F6B623"/>
+<rect x="118.8" y="165" width="2.4" height="7" fill="#F6B623"/>
+<rect x="118.2" y="178" width="3.6" height="9" fill="#F6B623"/>
+</g>
+<path d="M 150.6 66.3 A 40 40 0 1 0 150.6 117.7" fill="none" stroke="#FFFFFF" stroke-width="32"/>
+<path d="M 150.6 66.3 A 40 40 0 1 0 150.6 117.7" fill="none" stroke="#E2492F" stroke-width="24"/>
+<circle cx="120" cy="92" r="28" fill="#F6B623"/>
+<path d="M 20 170 C 58 160 95 164 120 171 C 140 177 160 177 178 167 L 204 139 C 212 130 228 136 221 150 C 207 180 176 204 130 212 C 94 217 58 212 26 206 Z" fill="#E2492F" stroke="#FFFFFF" stroke-width="5" stroke-linejoin="round"/>
+<path d="M 66 192 C 100 186 142 190 176 178" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+<path d="M 186 176 C 194 168 200 160 206 152" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round"/>
+<path d="M 176 190 C 186 184 196 177 204 170" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round"/>
+</svg>
