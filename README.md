@@ -8,6 +8,12 @@ A bilingual, client-friendly website for AYUDA DMV, offering document preparatio
 - Certified translations (USCIS, DMV, state agencies)
 - Appointment support and form guidance
 
+## Languages and SEO
+- Spanish pages live at the root (`/`), English pages in `en/`.
+- English text is kept in each Spanish page's `data-en` attributes. After editing a Spanish page, run `python tools/build_en.py` to regenerate `en/` (needs `pip install beautifulsoup4`), then commit both.
+- Business schema (JSON-LD) source: `tools/schema-business.json`. It is pasted into the `<head>` of every page; update all pages if it changes.
+- `sitemap.xml` lists both languages with hreflang alternates.
+
 ## Technologies Used
 - HTML5
 - CSS3 (custom stylesheet)

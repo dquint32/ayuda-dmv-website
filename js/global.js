@@ -1,6 +1,6 @@
 /* ================================================================
    AYUDA DMV — GLOBAL JAVASCRIPT
-   Version 9.0 · Shared by every page
+   Version 10.0 · Shared by every page
    ================================================================ */
 (function () {
   'use strict';
@@ -16,44 +16,26 @@
   };
 
   /* ---------------------------------------------------------------
-     1. LANGUAGE (Spanish default; any element with data-en + data-es)
+     1. LANGUAGE
+     Each language has its own URL: Spanish at /, English at /en/.
+     The page language comes from <html lang>, so search engines and
+     visitors always see the same text. The EN/ES control is a plain
+     link to the matching page (see tools/build_en.py).
      --------------------------------------------------------------- */
   const Language = {
     current: 'es',
 
     init() {
-      this.apply(store.get(STORAGE_KEY) === 'en' ? 'en' : 'es');
-      const btn = document.getElementById('lang-toggle');
-      if (btn) btn.addEventListener('click', () => this.apply(this.current === 'es' ? 'en' : 'es'));
-    },
-
-    apply(lang) {
-      this.current = lang;
-      store.set(STORAGE_KEY, lang);
-      document.documentElement.lang = lang;
-
-      const btn = document.getElementById('lang-toggle');
-      if (btn) {
-        btn.textContent = lang === 'es' ? 'EN' : 'ES';
-        btn.setAttribute('aria-label', lang === 'es' ? 'Switch to English' : 'Cambiar a español');
+      this.current = (document.documentElement.lang || 'es').toLowerCase().indexOf('en') === 0 ? 'en' : 'es';
+      store.set(STORAGE_KEY, this.current);
+      const link = document.getElementById('lang-toggle');
+      if (link && link.tagName === 'A') {
+        // Keep the reader's place when switching languages.
+        link.addEventListener('click', () => {
+          store.set(STORAGE_KEY, this.current === 'es' ? 'en' : 'es');
+          if (window.location.hash) link.href = link.href.split('#')[0] + window.location.hash;
+        });
       }
-
-      document.querySelectorAll('[data-en][data-es]').forEach(el => {
-        let text = el.getAttribute('data-' + lang);
-        if (text === null) return;
-        text = text
-          .replace(/\\n\\n|\n\n/g, '<br><br>')
-          .replace('{email}', '<a href="mailto:' + EMAIL + '">' + EMAIL + '</a>')
-          .replace('{phone}', '<a href="tel:+13035004122">' + PHONE_DISPLAY + '</a>');
-
-        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-          el.placeholder = text;
-        } else {
-          el.innerHTML = text;
-        }
-      });
-
-      document.dispatchEvent(new CustomEvent('languagechange', { detail: { lang } }));
     }
   };
 

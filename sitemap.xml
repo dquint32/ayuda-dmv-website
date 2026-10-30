@@ -1,8 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://ayudadmv.com/</loc><lastmod>2026-09-28</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://ayudadmv.com/services.html</loc><lastmod>2026-09-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://ayudadmv.com/about.html</loc><lastmod>2026-09-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://ayudadmv.com/contact.html</loc><lastmod>2026-09-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://ayudadmv.com/faq.html</loc><lastmod>2026-09-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://ayudadmv.com/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://ayudadmv.com/"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://ayudadmv.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ayudadmv.com/"/>
+  </url>
+  <url>
+    <loc>https://ayudadmv.com/en/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://ayudadmv.com/"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://ayudadmv.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ayudadmv.com/"/>
+  </url>
+  <url>
+    <loc>https://ayudadmv.com/services.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://ayudadmv.com/services.html"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://ayudadmv.com/en/services.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ayudadmv.com/services.html"/>
+  </url>
+  <url>
+    <loc>https://ayudadmv.com/en/services.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://ayudadmv.com/services.html"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://ayudadmv.com/en/services.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ayudadmv.com/services.html"/>
+  </url>
+  <url>
+    <loc>https://ayudadmv.com/about.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://ayudadmv.com/about.html"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://ayudadmv.com/en/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ayudadmv.com/about.html"/>
+  </url>
+  <url>
+    <loc>https://ayudadmv.com/en/about.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://ayudadmv.com/about.html"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://ayudadmv.com/en/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ayudadmv.com/about.html"/>
+  </url>
+  <url>
+    <loc>https://ayudadmv.com/contact.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://ayudadmv.com/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://ayudadmv.com/en/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ayudadmv.com/contact.html"/>
+  </url>
+  <url>
+    <loc>https://ayudadmv.com/en/contact.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://ayudadmv.com/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://ayudadmv.com/en/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ayudadmv.com/contact.html"/>
+  </url>
+  <url>
+    <loc>https://ayudadmv.com/faq.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://ayudadmv.com/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://ayudadmv.com/en/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ayudadmv.com/faq.html"/>
+  </url>
+  <url>
+    <loc>https://ayudadmv.com/en/faq.html</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://ayudadmv.com/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://ayudadmv.com/en/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ayudadmv.com/faq.html"/>
+  </url>
 </urlset>

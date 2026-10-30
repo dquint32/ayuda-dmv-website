@@ -1,0 +1,376 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://serviciosquintana.com/#org",
+      "name": "Servicios Quintana LLC",
+      "url": "https://serviciosquintana.com/",
+      "logo": "https://ayudadmv.com/img/logo/sq-mark.png",
+      "founder": {
+        "@id": "https://ayudadmv.com/#david"
+      },
+      "brand": {
+        "@id": "https://ayudadmv.com/#business"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://ayudadmv.com/#david",
+      "name": "David Quintana",
+      "alternateName": "David Matthew Quintana",
+      "jobTitle": "Colorado Notary Public and bilingual DMV document preparer",
+      "image": "https://ayudadmv.com/david-sonrisa.jpg",
+      "url": "https://ayudadmv.com/about.html",
+      "worksFor": {
+        "@id": "https://ayudadmv.com/#business"
+      },
+      "knowsLanguage": [
+        "es",
+        "en"
+      ],
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Metropolitan State University of Denver",
+        "sameAs": "https://en.wikipedia.org/wiki/Metropolitan_State_University_of_Denver"
+      },
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Colorado Notary Public Commission",
+          "credentialCategory": "license",
+          "identifier": "20254044224",
+          "recognizedBy": {
+            "@type": "GovernmentOrganization",
+            "name": "Colorado Secretary of State",
+            "url": "https://www.coloradosos.gov/"
+          }
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "B.S. in Health Informatics",
+          "credentialCategory": "degree",
+          "recognizedBy": {
+            "@type": "CollegeOrUniversity",
+            "name": "Metropolitan State University of Denver"
+          }
+        }
+      ]
+    },
+    {
+      "@type": [
+        "LocalBusiness",
+        "ProfessionalService"
+      ],
+      "@id": "https://ayudadmv.com/#business",
+      "name": "Ayuda DMV",
+      "legalName": "Servicios Quintana LLC",
+      "parentOrganization": {
+        "@id": "https://serviciosquintana.com/#org"
+      },
+      "founder": {
+        "@id": "https://ayudadmv.com/#david"
+      },
+      "employee": {
+        "@id": "https://ayudadmv.com/#david"
+      },
+      "description": "Bilingual (Spanish/English) DMV document preparation, DMV proxy service with a notarized DR 2175, Colorado bonded title document prep, Colorado notary public services, and certified Spanish-English translations across the Denver Metro area, Loveland to Castle Rock. Clerical support only; not affiliated with the Colorado DMV.",
+      "url": "https://ayudadmv.com/",
+      "image": [
+        "https://ayudadmv.com/img/logo/og-image.png",
+        "https://ayudadmv.com/david-sonrisa.jpg"
+      ],
+      "logo": "https://ayudadmv.com/img/logo/ayuda-dmv-badge-512.png",
+      "telephone": "+1-303-500-4122",
+      "email": "placasfirmas.david@gmail.com",
+      "priceRange": "$10–$310",
+      "currenciesAccepted": "USD",
+      "paymentAccepted": "Cash, Venmo, Zelle, ACH bank transfer, debit card, credit card (2% surcharge)",
+      "knowsLanguage": [
+        "es",
+        "en"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "CO",
+        "addressCountry": "US"
+      },
+      "areaServed": [
+        {
+          "@type": "GeoShape",
+          "name": "Denver Metro service area, Loveland to Castle Rock",
+          "polygon": "40.45 -105.15 40.45 -104.95 39.95 -104.6 39.6 -104.6 39.3 -104.78 39.3 -104.98 39.55 -105.3 40.05 -105.3 40.45 -105.15"
+        },
+        {
+          "@type": "City",
+          "name": "Denver, CO"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Adams County, Colorado",
+          "sameAs": "https://en.wikipedia.org/wiki/Adams_County,_Colorado"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Arapahoe County, Colorado",
+          "sameAs": "https://en.wikipedia.org/wiki/Arapahoe_County,_Colorado"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Jefferson County, Colorado",
+          "sameAs": "https://en.wikipedia.org/wiki/Jefferson_County,_Colorado"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Douglas County, Colorado",
+          "sameAs": "https://en.wikipedia.org/wiki/Douglas_County,_Colorado"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Broomfield County, Colorado",
+          "sameAs": "https://en.wikipedia.org/wiki/Broomfield,_Colorado"
+        },
+        {
+          "@type": "City",
+          "name": "Aurora, CO"
+        },
+        {
+          "@type": "City",
+          "name": "Lakewood, CO"
+        },
+        {
+          "@type": "City",
+          "name": "Thornton, CO"
+        },
+        {
+          "@type": "City",
+          "name": "Westminster, CO"
+        },
+        {
+          "@type": "City",
+          "name": "Arvada, CO"
+        },
+        {
+          "@type": "City",
+          "name": "Commerce City, CO"
+        },
+        {
+          "@type": "City",
+          "name": "Englewood, CO"
+        },
+        {
+          "@type": "City",
+          "name": "Littleton, CO"
+        },
+        {
+          "@type": "City",
+          "name": "Centennial, CO"
+        },
+        {
+          "@type": "City",
+          "name": "Highlands Ranch, CO"
+        },
+        {
+          "@type": "City",
+          "name": "Parker, CO"
+        },
+        {
+          "@type": "City",
+          "name": "Castle Rock, CO"
+        },
+        {
+          "@type": "City",
+          "name": "Broomfield, CO"
+        },
+        {
+          "@type": "City",
+          "name": "Longmont, CO"
+        },
+        {
+          "@type": "City",
+          "name": "Loveland, CO"
+        },
+        {
+          "@type": "State",
+          "name": "Colorado",
+          "description": "Remote bonded title document prep and mobile notary statewide (travel fee applies)"
+        }
+      ],
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "10:00",
+          "closes": "19:00"
+        }
+      ],
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "contactType": "customer service",
+          "telephone": "+1-303-500-4122",
+          "availableLanguage": [
+            "Spanish",
+            "English"
+          ],
+          "areaServed": "US-CO"
+        }
+      ],
+      "hasCredential": {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Colorado Notary Public Commission (David Quintana)",
+        "identifier": "20254044224"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Ayuda DMV services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "DMV document preparation",
+              "description": "Clerical typing of Colorado DMV forms you choose. Tier 1 $55, Tier 2 $65, Tier 3 $75."
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "priceCurrency": "USD",
+              "minPrice": 55
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "DMV proxy service (standard package)",
+              "description": "In-person DMV submission as your authorized agent under a notarized DR 2175. Typical total $95–$165."
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "priceCurrency": "USD",
+              "minPrice": 95
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Out-of-state title transfer proxy package",
+              "description": "Clerical prep and in-person DMV submission for out-of-state titles. Typical total $185–$245."
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "priceCurrency": "USD",
+              "minPrice": 185
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Colorado bonded title document prep",
+              "description": "Administrative prep of DR 2489A and DR 2394 plus certified-mail formatting. Remote, statewide."
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "priceCurrency": "USD",
+              "price": 150
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Notarization (mobile or standard)",
+              "description": "Per notarial act; mobile fee quoted separately."
+            },
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "priceCurrency": "USD",
+              "price": 15,
+              "unitText": "notarial act"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Notarization at a Community Hub",
+              "description": "Per notarial act; no mobile fee."
+            },
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "priceCurrency": "USD",
+              "price": 10,
+              "unitText": "notarial act"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Certified Spanish-English translation, first page",
+              "description": "Word-for-word translation with a signed certificate of accuracy; up to 250 words; 3 business days."
+            },
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "priceCurrency": "USD",
+              "price": 30,
+              "unitText": "page"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Certified translation, each additional page",
+              "description": "Rush (1 business day) adds $10 per page."
+            },
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "priceCurrency": "USD",
+              "price": 25,
+              "unitText": "page"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Passport document prep",
+              "description": "Clerical help with DS-11 or DS-82 and appointment scheduling."
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "priceCurrency": "USD",
+              "price": 75
+            }
+          }
+        ]
+      },
+      "sameAs": [
+        "https://serviciosquintana.com/",
+        "https://quintananotarysigning.com/"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://ayudadmv.com/#website",
+      "url": "https://ayudadmv.com/",
+      "name": "Ayuda DMV",
+      "publisher": {
+        "@id": "https://ayudadmv.com/#business"
+      },
+      "inLanguage": [
+        "es-US",
+        "en-US"
+      ]
+    }
+  ]
+}

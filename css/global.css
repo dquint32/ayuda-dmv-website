@@ -1421,3 +1421,81 @@ strong { font-weight: 700; }
 /* Commissioned & insured (2026-10-21) */
 .page-hero__badge { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; padding: 6px 14px; border: 1px solid currentColor; border-radius: 999px; font-size: .85rem; font-weight: 600; }
 .page-hero__insured { margin-top: 10px; max-width: 62ch; font-size: .9rem; line-height: 1.55; }
+
+/* ================================================================
+   SEO / GEO / LOCAL OVERHAUL (Oct 2026)
+   Homepage service answers, service area, trust facts, homepage FAQ,
+   "where should we meet" chips, sticky mobile action bar.
+   ================================================================ */
+
+/* Language switch is now a link to the other-language page */
+a.lang-toggle-button { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; line-height: 1; }
+
+/* Disclosure title stays prominent but is no longer a heading */
+p.disclosure__title { font-family: var(--font-display); font-weight: 800; line-height: 1.25; }
+
+/* Hero tagline under the keyword H1 */
+.hero__tagline { font-family: var(--font-hand); font-size: clamp(1.5rem, 1.2vw + 1.1rem, 2rem); color: var(--naranja-text); margin: 4px 0 10px; line-height: 1.1; }
+
+/* Service answers (What / How / Cost) */
+.geo h2, .area h2, .trust h2, .hfaq h2 { margin-bottom: 18px; }
+.geo__grid { display: grid; gap: 16px; }
+.geo__card { display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--cobalt-line); border-radius: var(--radius); padding: 22px 20px; box-shadow: var(--shadow); }
+.geo__card h3 { margin: 0 0 6px; color: var(--heading); font-family: var(--font-display); font-size: 1.2rem; line-height: 1.25; }
+.geo__card dt { font-weight: 700; color: var(--naranja-text); margin-top: 12px; font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; }
+.geo__card dd { margin: 4px 0 0; color: var(--ink-soft); }
+.geo__card ul { margin: 0; padding-left: 1.1rem; }
+.geo__card li + li { margin-top: 2px; }
+.geo__link { margin-top: auto; padding-top: 14px; font-weight: 700; }
+.geo__also { list-style: none; padding: 0; margin: 18px 0 0; display: grid; gap: 10px; }
+.geo__also a { display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-radius: var(--radius-sm); background: var(--naranja-tint); border: 1px solid var(--naranja-line); font-weight: 600; text-decoration: none; }
+.geo__also i { color: var(--naranja); }
+
+/* Service area */
+.area__list { list-style: none; padding: 0; margin: 14px 0; display: grid; gap: 8px; }
+.area__list li { padding: 10px 14px; background: var(--surface); border: 1px solid var(--cobalt-line); border-radius: var(--radius-sm); }
+.area__list strong { color: var(--heading); }
+.area__hubs { color: var(--ink-soft); }
+
+/* Trust facts */
+.trust__facts { display: grid; grid-template-columns: 1fr; gap: 2px 24px; margin: 0; background: var(--surface); border: 1px solid var(--cobalt-line); border-radius: var(--radius); padding: 20px; }
+.trust__facts dt { font-weight: 700; color: var(--heading); margin-top: 10px; }
+.trust__facts dd { margin: 0; color: var(--ink-soft); }
+
+/* Homepage FAQ */
+.hfaq__item { border-bottom: 1px solid var(--cobalt-line); padding: 14px 0; }
+.hfaq__item summary { cursor: pointer; font-weight: 700; color: var(--heading); min-height: 24px; }
+.hfaq__item p { margin: 10px 0 0; color: var(--ink-soft); }
+.hfaq__more { margin-top: 16px; font-weight: 700; }
+
+/* Where should we meet? (inside the dark invite card) */
+.meet { grid-column: 1 / -1; }
+.invite__card .meet__title { font-weight: 700; margin: 0 0 10px; color: var(--white); }
+.meet__chips { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.meet__chips a { display: inline-flex; align-items: center; min-height: 44px; padding: 8px 16px; border-radius: var(--pill); border: 1px solid rgba(255, 255, 255, .35); background: rgba(255, 255, 255, .08); color: var(--white); font-weight: 600; text-decoration: none; }
+.meet__chips a:hover { background: rgba(255, 255, 255, .18); color: var(--white); }
+
+/* Sticky mobile action bar */
+.mbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; padding: 6px 8px calc(6px + env(safe-area-inset-bottom)); background: var(--surface); border-top: 1px solid var(--cobalt-line); box-shadow: 0 -6px 18px -10px rgba(74, 44, 24, .35); }
+.mbar__btn { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; min-height: 52px; border-radius: var(--radius-sm); font-weight: 700; font-size: .85rem; text-decoration: none; }
+.mbar__btn--call { background: var(--naranja); color: var(--white); }
+.mbar__btn--wa { background: var(--whatsapp); color: #06301A; }
+.mbar__btn--book { background: var(--cobalt); color: var(--white); }
+.mbar__btn:hover { filter: brightness(.95); }
+body { padding-bottom: 72px; }
+.back-to-top-btn { bottom: 84px; }
+
+@media (min-width: 640px) {
+  .geo__grid { grid-template-columns: repeat(2, 1fr); }
+  .geo__also { grid-template-columns: repeat(2, 1fr); }
+  .area__list { grid-template-columns: repeat(2, 1fr); }
+  .trust__facts { grid-template-columns: max-content 1fr; padding: 24px 28px; }
+  .trust__facts dt { margin-top: 0; padding: 6px 0; }
+  .trust__facts dd { padding: 6px 0; }
+}
+@media (min-width: 992px) {
+  .area__list { grid-template-columns: repeat(3, 1fr); }
+  .mbar { display: none; }
+  body { padding-bottom: 0; }
+  .back-to-top-btn { bottom: 16px; }
+}
