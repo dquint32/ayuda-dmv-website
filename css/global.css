@@ -1499,3 +1499,124 @@ body { padding-bottom: 72px; }
   body { padding-bottom: 0; }
   .back-to-top-btn { bottom: 16px; }
 }
+
+/* ================================================================
+   HOMEPAGE REFRESH (Nov 2026)
+   Calmer hero, varied service layouts (price menu, tiers, notary
+   band, translation table), legal notice moved below the services.
+   Text and spacing do the work; icons only where they act as buttons.
+   ================================================================ */
+
+/* Hero: one value statement, room to breathe */
+.hero__place { font-size: .9rem; letter-spacing: .01em; color: var(--ink-muted); }
+.hero h1 { margin: 12px 0 14px; }
+.hero__tagline { margin: 0 0 18px; }
+.hero__lede { font-size: 1.15rem; line-height: 1.65; max-width: 44ch; }
+.hero__actions { margin-top: 32px; }
+.hero__credential { margin-top: 32px; padding-top: 18px; border-top: 1px solid var(--cobalt-line); max-width: 46ch; font-size: .92rem; color: var(--ink-muted); }
+.hero__credential a { font-weight: 600; white-space: nowrap; }
+
+/* Services: shared bones */
+.svc h2 { margin-bottom: 8px; }
+.svc__intro { color: var(--ink-soft); max-width: 60ch; margin: 0 0 28px; }
+.svc__pair { display: grid; gap: 16px; }
+.svc__card { display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--cobalt-line); border-radius: var(--radius); padding: 24px 22px; }
+.svc h3 { font-family: var(--font-display); font-size: 1.25rem; line-height: 1.25; color: var(--heading); margin: 0 0 10px; text-wrap: balance; }
+.svc__card p, .svc__band p { color: var(--ink-soft); }
+.svc__card > p + p, .svc__band-text > p + p, .svc__card--wide p + p { margin-top: 10px; }
+.svc__fine { margin-top: 10px; font-size: .88rem; color: var(--ink-muted) !important; }
+.svc__link { margin-top: auto; padding-top: 18px; font-weight: 700; }
+
+/* DMV prep: a short price menu */
+.svc__menu { margin: 20px 0 0; border-top: 1px solid var(--cobalt-line); }
+.svc__menu > div { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 11px 0; border-bottom: 1px solid var(--cobalt-line); }
+.svc__menu dt { font-weight: 600; color: var(--ink); }
+.svc__menu dt small { display: block; font-weight: 400; font-size: .84rem; color: var(--ink-muted); margin-top: 1px; }
+.svc__menu dd { margin: 0; font-family: var(--font-display); font-weight: 800; font-size: 1.15rem; color: var(--heading); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+/* DMV proxy: numbered steps + price tiers */
+.svc__steps { list-style: none; counter-reset: step; margin: 16px 0 0; padding: 0; display: grid; gap: 10px; }
+.svc__steps li { counter-increment: step; display: grid; grid-template-columns: 1.75rem 1fr; color: var(--ink-soft); }
+.svc__steps li::before { content: counter(step, decimal-leading-zero); font-family: var(--font-display); font-weight: 800; font-size: .85rem; color: var(--naranja-text); padding-top: .15em; }
+.svc__tiers { display: grid; margin: 20px 0 0; border: 1px solid var(--cobalt-line); border-radius: var(--radius-sm); }
+.svc__tiers > div { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 12px 14px; }
+.svc__tiers > div + div { border-top: 1px solid var(--cobalt-line); }
+.svc__tiers dt { font-size: .9rem; color: var(--ink-soft); }
+.svc__tiers dd { margin: 0; font-family: var(--font-display); font-weight: 800; font-size: 1.05rem; color: var(--heading); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+/* Notary: highlight band with the two ways to meet */
+.svc__band { margin-top: 16px; display: grid; gap: 24px; padding: 28px 22px; border-radius: var(--radius-lg); background: var(--naranja-tint); border: 1px solid var(--naranja-line); }
+.svc__band-text { display: flex; flex-direction: column; }
+.svc__eyebrow { font-family: var(--font-hand); font-size: 1.6rem; line-height: 1; color: var(--naranja-text) !important; margin-bottom: 8px; }
+.svc__options { display: grid; gap: 12px; }
+.svc__option { background: var(--surface); border: 1px solid var(--naranja-line); border-radius: var(--radius); padding: 20px; }
+.svc__option-price { font-family: var(--font-display); font-weight: 800; font-size: 2.6rem; line-height: 1; letter-spacing: -.02em; color: var(--heading) !important; }
+.svc__option-label { margin-top: 8px; font-weight: 700; color: var(--ink) !important; }
+.svc__option-note { margin-top: 6px; font-size: .9rem; }
+.svc__option--accent { background: var(--cobalt); border-color: var(--cobalt); }
+.svc__option--accent .svc__option-price,
+.svc__option--accent .svc__option-label { color: var(--white) !important; }
+.svc__option--accent .svc__option-note { color: rgba(255, 255, 255, .82) !important; }
+
+/* Translations: text beside a clean price table */
+.svc__card--wide { margin-top: 16px; display: grid; gap: 22px; }
+.svc__card--wide > div:first-child { display: flex; flex-direction: column; }
+.svc__table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.svc__table th, .svc__table td { text-align: left; padding: 12px 8px; border-bottom: 1px solid var(--cobalt-line); vertical-align: bottom; }
+.svc__table th:first-child { padding-left: 0; }
+.svc__table th:last-child, .svc__table td:last-child { padding-right: 0; }
+.svc__table thead th { font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--naranja-text); }
+.svc__table small { display: block; font-size: .8rem; font-weight: 400; text-transform: none; letter-spacing: 0; color: var(--ink-muted); }
+.svc__table tbody th { font-weight: 600; color: var(--ink); }
+.svc__table .num { text-align: right; }
+.svc__table td.num { font-family: var(--font-display); font-weight: 800; font-size: 1.2rem; color: var(--heading); }
+
+.svc__also { margin-top: 28px; color: var(--ink-soft); }
+.svc__also > span:first-child { font-weight: 700; color: var(--ink); }
+.svc__also a { font-weight: 600; }
+
+/* Legal notice: complete and readable, out of the first-view path */
+.notice { padding: 8px 0 48px; }
+.notice__box { background: var(--surface); border: 1px solid var(--cobalt-line); border-radius: var(--radius); padding: 22px 22px 24px; }
+.notice__title { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin-bottom: 14px; font-family: var(--font-display); font-weight: 800; font-size: 1.05rem; color: var(--heading); }
+.notice__sub { font-family: var(--font); font-weight: 500; font-size: .85rem; color: var(--ink-muted); }
+.notice__grid { display: grid; gap: 16px; }
+.notice__text { font-size: .92rem; line-height: 1.6; color: var(--ink-soft); }
+.notice__lang { display: block; margin-bottom: 4px; font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-muted); }
+
+/* Credentials: a sentence before the facts */
+.trust__intro { max-width: 62ch; margin: 0 0 20px; font-size: 1.05rem; color: var(--ink-soft); }
+
+@media (min-width: 640px) {
+  .svc__pair { grid-template-columns: repeat(2, 1fr); }
+  .svc__card { padding: 28px 26px; }
+  .svc__options { grid-template-columns: repeat(2, 1fr); }
+  .notice__grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+  .notice__grid .notice__text + .notice__text { border-left: 1px solid var(--cobalt-line); padding-left: 28px; }
+  .notice__box { padding: 26px 30px 28px; }
+}
+@media (min-width: 992px) {
+  .svc { padding-top: 64px; }
+  .svc__tiers { grid-template-columns: repeat(3, 1fr); }
+  .svc__tiers > div { flex-direction: column-reverse; justify-content: flex-end; gap: 4px; }
+  .svc__tiers > div + div { border-top: 0; border-left: 1px solid var(--cobalt-line); }
+  .svc__tiers dt { font-size: .8rem; line-height: 1.35; color: var(--ink-muted); }
+  .svc__band { grid-template-columns: 1fr 1.05fr; align-items: center; gap: 40px; padding: 40px; }
+  .svc__card--wide { grid-template-columns: 1fr 1fr; gap: 48px; padding: 36px; align-items: start; }
+}
+
+/* Services page: translation bundles and extras (Nov 2026) */
+.tr__sub { font-family: var(--font-display); font-size: 1.15rem; color: var(--heading); margin: 28px 0 10px; }
+.tr__sub:first-of-type { margin-top: 8px; }
+.tr__lede { color: var(--ink-soft); margin: -4px 0 14px; max-width: 62ch; }
+.tr__extras { display: grid; gap: 0; margin-top: 28px; border-top: 1px solid var(--cobalt-line); }
+.tr__extras > div { padding: 18px 0; border-bottom: 1px solid var(--cobalt-line); }
+.tr__extras p { color: var(--ink-soft); font-size: .92rem; }
+.tr__extra-price { font-family: var(--font-display); font-weight: 800; font-size: 1.5rem !important; line-height: 1.1; color: var(--heading) !important; }
+.tr__extra-price span { font-family: var(--font); font-size: .85rem; font-weight: 600; color: var(--ink-muted); }
+.tr__extra-name { margin: 4px 0 4px; font-weight: 700; color: var(--ink) !important; font-size: 1rem !important; }
+.tr__fine { margin-top: 18px; font-size: .88rem; color: var(--ink-muted); }
+@media (min-width: 992px) {
+  .tr__extras { grid-template-columns: 1.4fr 1fr 1fr; gap: 32px; }
+  .tr__extras > div { border-bottom: 0; }
+}
