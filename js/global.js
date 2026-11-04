@@ -33,9 +33,77 @@
         // Keep the reader's place when switching languages.
         link.addEventListener('click', () => {
           store.set(STORAGE_KEY, this.current === 'es' ? 'en' : 'es');
-          if (window.location.hash) link.href = link.href.split('#')[0] + window.location.hash;
+          const saved = Place.save(link);
+          // Fallback when the position can't be stored: at least keep the section.
+          if (!saved && window.location.hash) link.href = link.href.split('#')[0] + window.location.hash;
         });
       }
+      Place.restore();
+    }
+  };
+
+  /* ---------------------------------------------------------------
+     1a. KEEP THE READER'S PLACE ACROSS LANGUAGES
+     The English page is built from the Spanish one, so both have the
+     same blocks in the same order. Before switching we note which
+     block is at the top of the screen (and how far into it the reader
+     is, plus which FAQ answers are open), then the other page scrolls
+     to the same block.
+     --------------------------------------------------------------- */
+  const PLACE_KEY = 'ayudadmv_place';
+  const BLOCKS = 'main h1, main h2, main h3, main p, main li, main dt, main dd, main summary, main img, main figure, main table, footer p, footer li';
+  const session = {
+    get() { try { return JSON.parse(window.sessionStorage.getItem(PLACE_KEY)); } catch (e) { return null; } },
+    set(v) { try { window.sessionStorage.setItem(PLACE_KEY, JSON.stringify(v)); return true; } catch (e) { return false; } },
+    clear() { try { window.sessionStorage.removeItem(PLACE_KEY); } catch (e) { /* ignore */ } }
+  };
+  const headerHeight = () => {
+    const h = document.querySelector('.site-header');
+    return h && getComputedStyle(h).position !== 'static' ? h.getBoundingClientRect().height : 0;
+  };
+
+  const Place = {
+    save(link) {
+      const blocks = document.querySelectorAll(BLOCKS);
+      const top = headerHeight();
+      let index = -1, offset = 0;
+      for (let i = 0; i < blocks.length; i++) {
+        const r = blocks[i].getBoundingClientRect();
+        if (r.height && r.bottom > top + 1) { index = i; offset = r.top - top; break; }
+      }
+      const open = [];
+      document.querySelectorAll('details').forEach((d, i) => { if (d.open) open.push(i); });
+      return session.set({
+        path: new URL(link.href, window.location.href).pathname,
+        index, offset, open,
+        atTop: window.scrollY < 5,
+        time: Date.now()
+      });
+    },
+
+    restore() {
+      const p = session.get();
+      if (!p) return;
+      session.clear();
+      if (p.path !== window.location.pathname || Date.now() - p.time > 15000 || p.atTop) return;
+      const details = document.querySelectorAll('details');
+      (p.open || []).forEach(i => { if (details[i]) details[i].open = true; });
+      if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
+      let userMoved = false;
+      const stop = () => { userMoved = true; };
+      ['wheel', 'touchstart', 'keydown'].forEach(e => window.addEventListener(e, stop, { once: true, passive: true }));
+
+      const go = () => {
+        if (userMoved) return;
+        const el = document.querySelectorAll(BLOCKS)[p.index];
+        if (!el) return;
+        const y = el.getBoundingClientRect().top + window.scrollY - headerHeight() - p.offset;
+        window.scrollTo({ top: Math.max(0, y), behavior: 'instant' });
+      };
+      go();
+      // Images and fonts can shift the layout after load; settle again.
+      window.addEventListener('load', go, { once: true });
     }
   };
 
